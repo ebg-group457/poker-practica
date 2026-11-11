@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#0b3d24">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><meta name="apple-mobile-web-app-title" content="Póker"><title>Póker: ¿jugar o botar?</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Roboto,Arial,sans-serif;background:#0b3d24;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:18px}
+h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#cfe9da;text-align:center;margin-bottom:16px}
+.cards{display:flex;gap:14px;margin:10px 0 20px}.card{width:100px;height:142px;border-radius:12px;background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.card .r{font-size:40px;font-weight:700}.card .s{font-size:44px}.red{color:#d0021b!important}
+.btns{display:flex;gap:10px;width:100%;max-width:420px}.btns button{flex:1;padding:16px 0;font-size:18px;font-weight:700;border:0;border-radius:12px;color:#fff}
+#j{background:#1b7a3a}#d{background:#c98a0b}#b{background:#b3261e}button:disabled{opacity:.45}
+.fb{display:none;width:100%;max-width:420px;margin-top:16px;padding:16px;border-radius:12px;background:#fff;color:#222}
+.fb .t{font-weight:700;font-size:19px}.ok{color:#1b7a3a}.no{color:#b3261e}.fb p{margin:8px 0 12px;font-size:16px}
+.next{width:100%;padding:14px;font-size:17px;font-weight:700;border:0;border-radius:10px;background:#0b3d24;color:#fff}
+.score{display:flex;gap:10px;margin-top:20px;width:100%;max-width:420px}.score div{flex:1;background:rgba(255,255,255,.1);border-radius:10px;padding:10px;text-align:center}
+.score b{display:block;font-size:22px}.score span{font-size:13px;color:#cfe9da}
+.reset{margin-top:10px;background:none;border:1px solid #cfe9da;color:#cfe9da;padding:8px 16px;border-radius:8px}
+.help{max-width:420px;font-size:13px;color:#cfe9da;margin-top:16px;line-height:1.45}
+</style></head><body>
+<h1>♠ ¿Jugar, depende o botar? ♥</h1><div class="sub">Práctica de manos iniciales de Texas Hold'em</div>
+<div class="cards" id="cards"></div>
+<div class="btns"><button id="j" onclick="pick('jugar')">Jugar</button><button id="d" onclick="pick('depende')">Depende</button><button id="b" onclick="pick('botar')">Botar</button></div>
+<div class="fb" id="fb"><div class="t" id="ft"></div><p id="fe"></p><button class="next" onclick="nuevo()">Siguiente mano</button></div>
+<div class="score"><div><b id="sa">0/0</b><span>Aciertos</span></div><div><b id="sp">0%</b><span>Precisión</span></div><div><b id="sr">0</b><span>Racha</span></div><div><b id="sm">0</b><span>Mejor racha</span></div></div>
+<button class="reset" onclick="reiniciar()">Reiniciar marcador</button>
+<div class="help"><b>Jugar:</b> parejas de 9 o más, A-K, A-Q, A-J y K-Q del mismo palo.<br><b>Depende:</b> parejas bajas, As con carta del mismo palo, dos cartas altas y consecutivas medias del mismo palo. Juégalas si hablas de último o nadie ha subido.<br><b>Botar:</b> todo lo demás.</div>
+<script>
+const R=["A","K","Q","J","10","9","8","7","6","5","4","3","2"],S=["♠","♥","♦","♣"];
+const G1=["AA","KK","QQ","JJ","AKs","AKo"],G2=["1010","99","AQs","AQo","AJs","KQs"],
+G3=["88","77","66","55","44","33","22","A10s","A9s","A8s","A7s","A6s","A5s","A4s","A3s","A2s","KJs","K10s","QJs","Q10s","J10s","J9s","109s","98s","87s","76s","65s","AJo","A10o","KQo","KJo","QJo"];
+const L={jugar:"Jugar",depende:"Depende",botar:"Botar"};
+let st=JSON.parse(localStorage.getItem("pk")||'{"ok":0,"tot":0,"rac":0,"mej":0}'),a,b,el=null;
+const rnd=n=>Math.floor(Math.random()*n);
+function code(){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r);if(h==l)return R[h]+R[l];return R[h]+R[l]+(a.s==b.s?"s":"o")}
+function correct(c){return G1.includes(c)||G2.includes(c)?"jugar":G3.includes(c)?"depende":"botar"}
+function explain(c){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r),su=a.s==b.s,g=l-h;
+if(h==l){if(h<=3)return"Pareja alta: de las mejores manos. Juégala siempre y sube.";if(h<=5)return"Pareja media: casi siempre vale la pena entrar.";return"Pareja baja: entra solo si es barato (hablas de último o nadie subió) buscando trío. Si no lo ligas, retírate."}
+if(G1.includes(c))return"A-K es la mejor mano sin pareja. Juégala y sube.";
+if(G2.includes(c))return"Dos cartas muy altas: casi siempre vale la pena entrar.";
+if(h==0&&su)return"As con carta del mismo palo: busca color. Juégala desde posición tardía si nadie ha subido.";
+if(h==0&&l<=4)return"As con carta alta de distinto palo: jugable si hablas de último o nadie ha subido.";
+if(h==0)return"As con carta baja de distinto palo: si ligas pareja de ases, otro suele tener mejor acompañante. Bótala.";
+if(G3.includes(c)&&h<=4&&l<=4)return"Dos cartas altas: sirven si nadie ha subido fuerte, sobre todo desde posición tardía.";
+if(G3.includes(c)&&su)return"Consecutivas del mismo palo: buscan escalera o color. Juégalas si hablas de último y nadie ha subido.";
+if(su&&g==1)return"Consecutivas del mismo palo pero muy bajas: poco valor. Mejor bótalas al empezar.";
+if(g==1)return"Consecutivas de distinto palo: pierden mucho valor. Bótalas.";
+if(su)return"Ser del mismo palo no salva cartas sin relación. Bótala.";
+return"Dos cartas sin relación: no es pareja, ni dos altas, ni consecutivas del mismo palo. Bótala."}
+function card(k){const red=k.s==1||k.s==2;return`<div class="card${red?" red":""}"><div class="r${red?" red":""}">${R[k.r]}</div><div class="s${red?" red":""}">${S[k.s]}</div></div>`}
+function score(){document.getElementById("sa").textContent=st.ok+"/"+st.tot;document.getElementById("sp").textContent=(st.tot?Math.round(st.ok/st.tot*100):0)+"%";document.getElementById("sr").textContent=st.rac;document.getElementById("sm").textContent=st.mej;localStorage.setItem("pk",JSON.stringify(st))}
+function nuevo(){a={r:rnd(13),s:rnd(4)};do{b={r:rnd(13),s:rnd(4)}}while(b.r==a.r&&b.s==a.s);el=null;
+document.getElementById("cards").innerHTML=card(a)+card(b);document.getElementById("fb").style.display="none";["j","d","b"].forEach(i=>document.getElementById(i).disabled=false)}
+function pick(x){if(el)return;el=x;const c=code(),r=correct(c),ok=x==r;st.tot++;if(ok){st.ok++;st.rac++;st.mej=Math.max(st.mej,st.rac)}else st.rac=0;score();
+const t=document.getElementById("ft");t.textContent=ok?"¡Correcto!":"No. La respuesta es «"+L[r]+"».";t.className="t "+(ok?"ok":"no");
+document.getElementById("fe").textContent=c+": "+explain(c);document.getElementById("fb").style.display="block";["j","d","b"].forEach(i=>document.getElementById(i).disabled=true)}
+function reiniciar(){st={ok:0,tot:0,rac:0,mej:0};score();nuevo()}
+score();nuevo();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
+</script></body></html>

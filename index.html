@@ -1,22 +1,55 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#0b3d24">
-<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><meta name="apple-mobile-web-app-title" content="Póker"><title>Póker: ¿jugar o botar?</title>
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><meta name="apple-mobile-web-app-title" content="Póker"><title>Póker: práctica</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Roboto,Arial,sans-serif;background:#0b3d24;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:18px}
-h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#cfe9da;text-align:center;margin-bottom:16px}
-.cards{display:flex;gap:14px;margin:10px 0 20px}.card{width:100px;height:142px;border-radius:12px;background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{overflow-x:hidden}
+body{margin:0;font-family:-apple-system,Roboto,Arial,sans-serif;background:#0b3d24;color:#fff;min-height:100vh;padding:14px 16px 28px}
+.screen{display:none;flex-direction:column;align-items:center;width:100%;max-width:440px;margin:0 auto}.screen.on{display:flex}
+h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#cfe9da;text-align:center;margin-bottom:14px}
+.back{align-self:flex-start;background:rgba(255,255,255,.12);border:0;color:#fff;font-size:15px;font-weight:600;padding:9px 14px;border-radius:10px;margin-bottom:6px}
+.cards{display:flex;gap:14px;margin:10px 0 20px;justify-content:center}.card{width:100px;height:142px;border-radius:12px;background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.4);transition:opacity .2s,transform .2s}
 .card .r{font-size:40px;font-weight:700}.card .s{font-size:44px}.red{color:#d0021b!important}
-.btns{display:flex;gap:10px;width:100%;max-width:420px}.btns button{flex:1;padding:16px 0;font-size:18px;font-weight:700;border:0;border-radius:12px;color:#fff}
-#j{background:#1b7a3a}#d{background:#c98a0b}#b{background:#b3261e}button:disabled{opacity:.45}
-.fb{display:none;width:100%;max-width:420px;margin-top:16px;padding:16px;border-radius:12px;background:#fff;color:#222}
-.fb .t{font-weight:700;font-size:19px}.ok{color:#1b7a3a}.no{color:#b3261e}.fb p{margin:8px 0 12px;font-size:16px}
+.row5{display:flex;gap:6px;justify-content:center;width:100%;margin:6px 0 10px}
+.card.m{width:62px;max-width:62px;min-width:0;flex:1 1 0;height:88px;border-radius:9px}.card.m .r{font-size:26px}.card.m .s{font-size:28px}
+.card.l{width:78px;height:110px}.card.l .r{font-size:32px}.card.l .s{font-size:34px}
+.card.xs{width:34px;height:48px;border-radius:6px;box-shadow:0 2px 4px rgba(0,0,0,.35)}.card.xs .r{font-size:15px}.card.xs .s{font-size:15px}
+.card.hi{outline:4px solid #ffd54a;outline-offset:-1px;transform:translateY(-6px)}.card.dim{opacity:.4}
+.btns{display:flex;gap:10px;width:100%}.btns button,.opt{flex:1;padding:16px 0;font-size:18px;font-weight:700;border:0;border-radius:12px;color:#fff}
+#j,.g{background:#1b7a3a}#d,.y{background:#c98a0b}#b,.rd{background:#b3261e}.bl{background:#2d5fa8}button:disabled{opacity:.45}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}.grid button{padding:13px 4px;font-size:16px;font-weight:700;border:0;border-radius:10px;background:#f2f2f2;color:#0b3d24}
+.grid button.ok{background:#1b7a3a;color:#fff}.grid button.bad{background:#b3261e;color:#fff}
+.fb{display:none;width:100%;margin-top:14px;padding:16px;border-radius:12px;background:#fff;color:#222}
+.fb .t{font-weight:700;font-size:19px}.ok{color:#1b7a3a}.no{color:#b3261e}.fb p{margin:8px 0 12px;font-size:16px;line-height:1.4}
 .next{width:100%;padding:14px;font-size:17px;font-weight:700;border:0;border-radius:10px;background:#0b3d24;color:#fff}
-.score{display:flex;gap:10px;margin-top:20px;width:100%;max-width:420px}.score div{flex:1;background:rgba(255,255,255,.1);border-radius:10px;padding:10px;text-align:center}
-.score b{display:block;font-size:22px}.score span{font-size:13px;color:#cfe9da}
+.score{display:flex;gap:8px;margin-top:18px;width:100%}.score div{flex:1;background:rgba(255,255,255,.1);border-radius:10px;padding:10px 4px;text-align:center}
+.score b{display:block;font-size:21px}.score span{font-size:12px;color:#cfe9da}
 .reset{margin-top:10px;background:none;border:1px solid #cfe9da;color:#cfe9da;padding:8px 16px;border-radius:8px}
-.help{max-width:420px;font-size:13px;color:#cfe9da;margin-top:16px;line-height:1.45}
+.help{font-size:13px;color:#cfe9da;margin-top:16px;line-height:1.45;width:100%}
+.tile{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;color:#0b3d24;border:0;border-radius:16px;padding:16px;margin:6px 0;box-shadow:0 4px 10px rgba(0,0,0,.35)}
+.tile .ic{font-size:30px;width:52px;height:52px;border-radius:12px;background:#0b3d24;color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.tile .ic.red{background:#7a0d18;color:#fff!important}.tile b{display:block;font-size:19px}.tile small{display:block;font-size:13px;color:#456;margin-top:2px}.tile em{font-style:normal;font-size:12px;color:#1b7a3a;font-weight:700}
+.hand{width:100%;background:rgba(255,255,255,.08);border:3px solid transparent;border-radius:14px;padding:8px 6px 2px;margin:4px 0;color:#fff}
+.hand .lab{font-weight:700;font-size:16px;text-align:left;padding-left:4px}.hand.win{border-color:#ffd54a}.hand .nm{font-size:13px;color:#ffd54a;min-height:16px;text-align:left;padding-left:4px}
+.lbl{align-self:flex-start;font-size:14px;color:#cfe9da;font-weight:600;margin-top:4px}
+.rk{width:100%;background:rgba(255,255,255,.08);border-radius:12px;padding:10px;margin:5px 0}.rk .h{display:flex;justify-content:space-between;align-items:baseline}
+.rk .h b{font-size:17px}.rk .h span{font-size:12px;color:#cfe9da}.rk .row5{justify-content:flex-start;gap:4px;margin:6px 0 4px}.rk p{margin:0;font-size:13px;color:#e4f3ea}
 </style></head><body>
+
+<!-- MENÚ -->
+<section class="screen" id="s-menu">
+<h1>♠ Práctica de póker ♥</h1><div class="sub">Texas Hold'em para principiantes. Elige un juego:</div>
+<button class="tile" onclick="go('manos')"><div class="ic">♠</div><div><b>Manos iniciales</b><small>¿Jugar, depende o botar tus dos cartas?</small><em id="m-manos"></em></div></button>
+<button class="tile" onclick="go('quemano')"><div class="ic red">♥</div><div><b>¿Qué mano tengo?</b><small>Reconoce la combinación de 5 cartas.</small><em id="m-quemano"></em></div></button>
+<button class="tile" onclick="go('cualgana')"><div class="ic">⚔</div><div><b>¿Cuál gana?</b><small>Compara dos manos, con kickers y empates.</small><em id="m-cualgana"></em></div></button>
+<button class="tile" onclick="go('flop')"><div class="ic red">♦</div><div><b>¿Sigo después del flop?</b><small>Tus 2 cartas + 3 de la mesa: ¿seguir o retirarte?</small><em id="m-flop"></em></div></button>
+<button class="tile" onclick="go('ranking')"><div class="ic">♣</div><div><b>Ranking de manos</b><small>De la mejor a la peor, con ejemplos.</small></div></button>
+<div class="help">Funciona sin internet. Tus marcadores se guardan en este celular.</div>
+</section>
+
+<!-- JUEGO 1: MANOS INICIALES (lógica original) -->
+<section class="screen" id="s-manos">
+<button class="back" onclick="go('menu')">← Volver al menú</button>
 <h1>♠ ¿Jugar, depende o botar? ♥</h1><div class="sub">Práctica de manos iniciales de Texas Hold'em</div>
 <div class="cards" id="cards"></div>
 <div class="btns"><button id="j" onclick="pick('jugar')">Jugar</button><button id="d" onclick="pick('depende')">Depende</button><button id="b" onclick="pick('botar')">Botar</button></div>
@@ -24,13 +57,170 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 <div class="score"><div><b id="sa">0/0</b><span>Aciertos</span></div><div><b id="sp">0%</b><span>Precisión</span></div><div><b id="sr">0</b><span>Racha</span></div><div><b id="sm">0</b><span>Mejor racha</span></div></div>
 <button class="reset" onclick="reiniciar()">Reiniciar marcador</button>
 <div class="help"><b>Jugar:</b> parejas de 9 o más, A-K, A-Q, A-J y K-Q del mismo palo.<br><b>Depende:</b> parejas bajas, As con carta del mismo palo, dos cartas altas y consecutivas medias del mismo palo. Juégalas si hablas de último o nadie ha subido.<br><b>Botar:</b> todo lo demás.</div>
+</section>
+
+<!-- JUEGO 2 -->
+<section class="screen" id="s-quemano">
+<button class="back" onclick="go('menu')">← Volver al menú</button>
+<h1>¿Qué mano tengo?</h1><div class="sub">Mira las 5 cartas y elige la combinación</div>
+<div class="row5" id="q-cards"></div>
+<div class="grid" id="q-opts"></div>
+<div class="fb" id="q-fb"><div class="t" id="q-ft"></div><p id="q-fe"></p><button class="next" onclick="Q.nuevo()">Siguiente mano</button></div>
+<div class="score" id="q-sc"></div><button class="reset" onclick="Q.reset()">Reiniciar marcador</button>
+<div class="help">Las cartas resaltadas en amarillo son las que forman la mano.</div>
+</section>
+
+<!-- JUEGO 3 -->
+<section class="screen" id="s-cualgana">
+<button class="back" onclick="go('menu')">← Volver al menú</button>
+<h1>¿Cuál gana?</h1><div class="sub">Toca la mano ganadora o «Empate»</div>
+<button class="hand" id="w-A" onclick="W.pick('A')"><div class="lab">Mano A</div><div class="row5" id="w-cA"></div><div class="nm" id="w-nA"></div></button>
+<button class="hand" id="w-B" onclick="W.pick('B')"><div class="lab">Mano B</div><div class="row5" id="w-cB"></div><div class="nm" id="w-nB"></div></button>
+<div class="btns" style="margin-top:6px"><button class="g" id="w-bA" onclick="W.pick('A')">Gana A</button><button class="y" id="w-bE" onclick="W.pick('E')">Empate</button><button class="bl" id="w-bB" onclick="W.pick('B')">Gana B</button></div>
+<div class="fb" id="w-fb"><div class="t" id="w-ft"></div><p id="w-fe"></p><button class="next" onclick="W.nuevo()">Siguientes manos</button></div>
+<div class="score" id="w-sc"></div><button class="reset" onclick="W.reset()">Reiniciar marcador</button>
+<div class="help">Si las dos tienen la misma combinación, gana la de cartas más altas; si siguen igual, desempata la carta suelta más alta (el «kicker»). Los palos nunca desempatan.</div>
+</section>
+
+<!-- JUEGO 4 -->
+<section class="screen" id="s-flop">
+<button class="back" onclick="go('menu')">← Volver al menú</button>
+<h1>¿Sigo después del flop?</h1><div class="sub">Tus 2 cartas y las 3 primeras de la mesa</div>
+<div class="lbl">Tus cartas</div><div class="row5" id="f-hole"></div>
+<div class="lbl">Flop (mesa)</div><div class="row5" id="f-flop"></div>
+<div class="btns" style="margin-top:6px"><button class="g" id="f-bS" onclick="F.pick(true)">Seguir</button><button class="rd" id="f-bR" onclick="F.pick(false)">Retirarme</button></div>
+<div class="fb" id="f-fb"><div class="t" id="f-ft"></div><p id="f-fe"></p><button class="next" onclick="F.nuevo()">Siguiente mano</button></div>
+<div class="score" id="f-sc"></div><button class="reset" onclick="F.reset()">Reiniciar marcador</button>
+<div class="help"><b>Seguir</b> si tienes pareja alta o algo mejor usando tus cartas (pareja con la carta más alta del flop, sobrepareja, doble pareja, trío o más), o si te falta <b>una</b> carta: 4 del mismo palo (color) o 4 seguidas abiertas por los dos lados (escalera).<br><b>Retirarme</b> en todo lo demás.</div>
+</section>
+
+<!-- RANKING -->
+<section class="screen" id="s-ranking">
+<button class="back" onclick="go('menu')">← Volver al menú</button>
+<h1>Ranking de manos</h1><div class="sub">De la mejor (arriba) a la peor (abajo)</div>
+<div id="rk-list" style="width:100%"></div>
+<div class="help">El palo solo importa para color y escaleras de color. Con la misma combinación, gana la de cartas más altas.</div>
+</section>
+
 <script>
+/*ENGINE-START*/
+const CATS=["Carta alta","Pareja","Doble pareja","Trío","Escalera","Color","Full","Póker","Escalera de color","Escalera real"];
+const SUITN=["picas","corazones","diamantes","tréboles"],SUITC=["♠","♥","♦","♣"];
+const rl=v=>v==14||v==1?"A":v==13?"K":v==12?"Q":v==11?"J":String(v);
+// carta: {v:2..14, s:0..3}
+function ev5(cs){
+  const vs=cs.map(c=>c.v).sort((a,b)=>b-a),cnt={};vs.forEach(v=>cnt[v]=(cnt[v]||0)+1);
+  const gr=Object.keys(cnt).map(Number).sort((a,b)=>cnt[b]-cnt[a]||b-a);
+  const flush=cs.every(c=>c.s==cs[0].s);let sh=0;
+  if(gr.length==5){if(vs[0]-vs[4]==4)sh=vs[0];else if(vs[0]==14&&vs[1]==5&&vs[4]==2)sh=5}
+  const all=[0,1,2,3,4],of=(...r)=>cs.map((c,i)=>r.includes(c.v)?i:-1).filter(i=>i>=0);
+  let cat,tb,used;
+  if(sh&&flush){cat=sh==14?9:8;tb=[sh];used=all}
+  else if(cnt[gr[0]]==4){cat=7;tb=gr;used=of(gr[0])}
+  else if(cnt[gr[0]]==3&&cnt[gr[1]]==2){cat=6;tb=gr;used=all}
+  else if(flush){cat=5;tb=vs;used=all}
+  else if(sh){cat=4;tb=[sh];used=all}
+  else if(cnt[gr[0]]==3){cat=3;tb=gr;used=of(gr[0])}
+  else if(cnt[gr[0]]==2&&cnt[gr[1]]==2){cat=2;tb=gr;used=of(gr[0],gr[1])}
+  else if(cnt[gr[0]]==2){cat=1;tb=gr;used=of(gr[0])}
+  else{cat=0;tb=vs;used=of(vs[0])}
+  return{cat,tb,used,name:CATS[cat],flushSuit:flush?cs[0].s:-1};
+}
+function cmpEv(a,b){if(a.cat!=b.cat)return a.cat-b.cat;for(let i=0;i<Math.max(a.tb.length,b.tb.length);i++){const d=(a.tb[i]||0)-(b.tb[i]||0);if(d)return d}return 0}
+function compare(h1,h2){return cmpEv(ev5(h1),ev5(h2))}
+function describe(e){const t=e.tb,r=rl;switch(e.cat){
+  case 0:return"Carta alta "+r(t[0]);case 1:return"Pareja de "+r(t[0]);case 2:return"Doble pareja de "+r(t[0])+" y "+r(t[1]);
+  case 3:return"Trío de "+r(t[0]);case 4:return t[0]==5?"Escalera A-2-3-4-5":"Escalera al "+r(t[0]);case 5:return"Color al "+r(t[0]);
+  case 6:return"Full de "+r(t[0])+" con "+r(t[1]);case 7:return"Póker de "+r(t[0]);case 8:return t[0]==5?"Escalera de color A-2-3-4-5":"Escalera de color al "+r(t[0]);default:return"Escalera real"}}
+function whyCat(e){const t=e.tb,r=rl;switch(e.cat){
+  case 0:return"No hay pareja, ni 5 seguidas, ni 5 del mismo palo: cuenta tu carta más alta, el "+r(t[0])+".";
+  case 1:return"Dos cartas iguales: pareja de "+r(t[0])+".";
+  case 2:return"Dos parejas distintas: "+r(t[0])+" y "+r(t[1])+".";
+  case 3:return"Tres cartas iguales: trío de "+r(t[0])+".";
+  case 4:return t[0]==5?"Cinco seguidas: A-2-3-4-5 (aquí el As vale como 1). No son del mismo palo, así que es escalera normal.":"Cinco cartas seguidas, del "+r(t[0]-4)+" al "+r(t[0])+", de distinto palo.";
+  case 5:return"Cinco cartas del mismo palo ("+SUITN[e.flushSuit]+"), aunque no van seguidas.";
+  case 6:return"Trío de "+r(t[0])+" más pareja de "+r(t[1])+".";
+  case 7:return"Cuatro cartas iguales: póker de "+r(t[0])+".";
+  case 8:return(t[0]==5?"A-2-3-4-5":"Del "+r(t[0]-4)+" al "+r(t[0]))+", seguidas y todas de "+SUITN[e.flushSuit]+". Si llegara hasta el As sería escalera real.";
+  default:return"10-J-Q-K-A, todas de "+SUITN[e.flushSuit]+": la mejor mano del póker."}}
+// explicación de quién gana
+function whyWin(a,b){const d=cmpEv(a,b),r=rl;if(a.cat!=b.cat)return"«"+(d>0?a.name:b.name)+"» le gana a «"+(d>0?b.name:a.name)+"» en el ranking.";
+  if(d==0)return"Tienen exactamente las mismas cartas en valor (los palos no desempatan): se reparte el bote.";
+  let i=0;while(a.tb[i]==b.tb[i])i++;const w=d>0?"A":"B",x=r(a.tb[i]),y=r(b.tb[i]);
+  const main={1:1,2:2,3:1,6:2,7:1}[a.cat]||0;
+  if(a.cat==4||a.cat==8)return"Las dos son escalera: gana la que llega más alto ("+(d>0?describe(a):describe(b))+").";
+  if(i<main)return"Misma combinación; gana la de cartas más altas: "+x+" contra "+y+". Gana "+w+".";
+  if(a.cat==0||a.cat==5)return"Misma combinación; se compara carta por carta de mayor a menor. La "+(i+1)+"ª carta: "+x+" contra "+y+". Gana "+w+".";
+  return"Misma combinación; desempata el kicker (carta suelta): "+x+" contra "+y+". Gana "+w+".";}
+// regla del flop
+function flopInfo(hole,flop){const all=hole.concat(flop),e=ev5(all),r=rl,bv=flop.map(c=>c.v),maxB=Math.max(...bv);
+  const bc={};bv.forEach(v=>bc[v]=(bc[v]||0)+1);const boardTrips=Object.values(bc).includes(3),boardPair=Object.values(bc).includes(2);
+  const[h1,h2]=hole.map(c=>c.v),idx=f=>all.map((c,i)=>f(c,i)?i:-1).filter(i=>i>=0);
+  if(e.cat>=4)return{seguir:true,caso:"hecha",hi:e.used,msg:"Ya tienes "+describe(e)+": mano hecha muy fuerte."};
+  if(e.cat==3&&!boardTrips){const t=e.tb[0];return{seguir:true,caso:"trio",hi:e.used,msg:"Tienes trío de "+r(t)+" usando tus cartas: muy fuerte."}}
+  if(h1!=h2&&bv.includes(h1)&&bv.includes(h2))return{seguir:true,caso:"dosp",hi:idx(c=>c.v==h1||c.v==h2),msg:"Doble pareja: tus dos cartas ("+r(Math.max(h1,h2))+" y "+r(Math.min(h1,h2))+") hacen pareja con la mesa."};
+  if(h1==maxB||h2==maxB)return{seguir:true,caso:"top",hi:idx(c=>c.v==maxB),msg:"Pareja alta: tu "+r(maxB)+" hace pareja con la carta más alta del flop."};
+  if(h1==h2&&h1>maxB)return{seguir:true,caso:"over",hi:[0,1],msg:"Sobrepareja: tu pareja de "+r(h1)+" es más alta que todas las cartas del flop."};
+  const sc=[0,0,0,0];all.forEach(c=>sc[c.s]++);const fs=sc.indexOf(4);
+  if(fs>=0)return{seguir:true,caso:"color",hi:idx(c=>c.s==fs),msg:"Tienes 4 de "+SUITN[fs]+": te falta una para color."};
+  const vset=new Set(all.map(c=>c.v));if(vset.has(14))vset.add(1);
+  for(let lo=10;lo>=2;lo--){if([0,1,2,3].every(k=>vset.has(lo+k))){const run=[lo,lo+1,lo+2,lo+3];
+    return{seguir:true,caso:"escalera",hi:idx(c=>run.includes(c.v)),msg:"Tienes "+run.map(r).join("-")+" seguidas: proyecto de escalera abierto. Te sirve un "+r(lo-1)+" o un "+r(lo+4)+"."}}}
+  if(h1==h2&&h1<maxB)return{seguir:false,caso:"baja",hi:[0,1],msg:"Tu pareja de "+r(h1)+" está por debajo de la carta más alta del flop ("+r(maxB)+"): no es pareja alta."};
+  const ph=hole.find(c=>bv.includes(c.v));
+  if(ph)return{seguir:false,caso:"media",hi:idx(c=>c.v==ph.v),msg:"Tu "+r(ph.v)+" hace pareja con una carta baja del flop, no con la más alta ("+r(maxB)+"): no es pareja alta."};
+  for(let lo=10;lo>=1;lo--){const win=[0,1,2,3,4].map(k=>lo+k),n=win.filter(v=>vset.has(v)).length;
+    if(n==4)return{seguir:false,caso:"esquinera",hi:idx(c=>win.includes(c.v)||(lo==1&&c.v==14)),msg:"Solo tienes escalera de un lado o con hueco: te sirve una única carta. Es poco probable; retírate."}}
+  if(boardPair||boardTrips)return{seguir:false,caso:"mesa",hi:idx((c,i)=>i>=2&&bc[c.v]>=2),msg:"La "+(boardTrips?"combinación":"pareja")+" es de la mesa y la comparten todos: tus cartas no ligaron nada."};
+  return{seguir:false,caso:"nada",hi:[],msg:"No ligaste pareja ni tienes 4 para color o escalera abierta."};}
+// generadores
+const rnd=n=>Math.floor(Math.random()*n);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+function pickRanks(n,ex){const p=shuffle([2,3,4,5,6,7,8,9,10,11,12,13,14].filter(v=>!ex.includes(v)));return p.slice(0,n)}
+function fromRanks(ranks,suit,used){used=used||new Set();const out=[],u=new Set(used);
+  for(const v of ranks){const opts=(suit!=null?[suit]:[0,1,2,3]).filter(s=>!u.has(v+"-"+s));if(!opts.length)return null;const s=opts[rnd(opts.length)];u.add(v+"-"+s);out.push({v,s})}return out}
+function strRanks(h){return h==5?[14,2,3,4,5]:[h,h-1,h-2,h-3,h-4]}
+function genCat(cat,used){for(let t=0;t<500;t++){let rk,suit=null;
+  if(cat==0)rk=pickRanks(5,[]);
+  else if(cat==1){const p=pickRanks(4,[]);rk=[p[0],p[0],p[1],p[2],p[3]]}
+  else if(cat==2){const p=pickRanks(3,[]);rk=[p[0],p[0],p[1],p[1],p[2]]}
+  else if(cat==3){const p=pickRanks(3,[]);rk=[p[0],p[0],p[0],p[1],p[2]]}
+  else if(cat==4){const x=Math.random(),h=x<.22?5:x<.44?14:6+rnd(8);rk=strRanks(h)}
+  else if(cat==5){rk=pickRanks(5,[]);suit=rnd(4)}
+  else if(cat==6){const p=pickRanks(2,[]);rk=[p[0],p[0],p[0],p[1],p[1]]}
+  else if(cat==7){const p=pickRanks(2,[]);rk=[p[0],p[0],p[0],p[0],p[1]]}
+  else if(cat==8){const h=Math.random()<.25?5:6+rnd(8);rk=strRanks(h);suit=rnd(4)}
+  else{rk=strRanks(14);suit=rnd(4)}
+  const cs=fromRanks(rk,suit,used);if(cs&&ev5(cs).cat==cat)return shuffle(cs)}return null}
+const QW=[1,1.3,1.2,1,1.3,1,1,.8,.7,.5];
+function wpick(w){let s=w.reduce((a,b)=>a+b),x=Math.random()*s;for(let i=0;i<w.length;i++){x-=w[i];if(x<0)return i}return w.length-1}
+const keys=cs=>new Set(cs.map(c=>c.v+"-"+c.s));
+function genPair(){for(;;){const m=Math.random();
+  if(m<.12){const c=[0,1,2,4][rnd(4)],A=genCat(c);for(let t=0;t<300;t++){const B=fromRanks(shuffle(A.map(x=>x.v)),null,keys(A));if(B&&compare(A,B)==0)return[A,B]}continue}
+  const ca=wpick(QW.slice(0,9)),A=genCat(ca),cb=m<.6?ca:wpick(QW.slice(0,9)),B=genCat(cb,keys(A));if(A&&B)return[A,B]}}
+function randDeal(n){const d=[];for(let v=2;v<=14;v++)for(let s=0;s<4;s++)d.push({v,s});shuffle(d);return d.slice(0,n)}
+const FCASES={si:["hecha","trio","dosp","top","top","over","color","escalera"],no:["nada","nada","media","baja","esquinera","mesa"]};
+function genFlop(){const yes=Math.random()<.5,list=FCASES[yes?"si":"no"],want=list[rnd(list.length)];let last;
+  for(let t=0;t<60000;t++){const d=randDeal(5),hole=d.slice(0,2),flop=d.slice(2),inf=flopInfo(hole,flop);last={hole,flop,inf};if(inf.caso==want)return last}return last}
+/*ENGINE-END*/
+
+// ---------- utilidades de interfaz ----------
+const $=id=>document.getElementById(id);
+function cardV(c,sz,cls){const red=c.s==1||c.s==2;return`<div class="card ${sz||""} ${cls||""}${red?" red":""}"><div class="r${red?" red":""}">${rl(c.v)}</div><div class="s${red?" red":""}">${SUITC[c.s]}</div></div>`}
+function rowHTML(cs,sz,hi){return cs.map((c,i)=>cardV(c,sz,hi?(hi.includes(i)?"hi":"dim"):"")).join("")}
+function Stats(key,pre){this.key=key;this.pre=pre;this.st=JSON.parse(localStorage.getItem(key)||'{"ok":0,"tot":0,"rac":0,"mej":0}')}
+Stats.prototype.html=function(){const p=this.pre;$(p+"-sc").innerHTML=`<div><b id="${p}-a">0/0</b><span>Aciertos</span></div><div><b id="${p}-p">0%</b><span>Precisión</span></div><div><b id="${p}-r">0</b><span>Racha</span></div><div><b id="${p}-m">0</b><span>Mejor racha</span></div>`;this.show()};
+Stats.prototype.show=function(){const s=this.st,p=this.pre;$(p+"-a").textContent=s.ok+"/"+s.tot;$(p+"-p").textContent=(s.tot?Math.round(s.ok/s.tot*100):0)+"%";$(p+"-r").textContent=s.rac;$(p+"-m").textContent=s.mej;localStorage.setItem(this.key,JSON.stringify(s))};
+Stats.prototype.add=function(ok){const s=this.st;s.tot++;if(ok){s.ok++;s.rac++;s.mej=Math.max(s.mej,s.rac)}else s.rac=0;this.show()};
+Stats.prototype.reset=function(){this.st={ok:0,tot:0,rac:0,mej:0};this.show()};
+function fb(p,ok,title,text){const t=$(p+"-ft");t.textContent=title;t.className="t "+(ok?"ok":"no");$(p+"-fe").innerHTML=text;$(p+"-fb").style.display="block"}
+
+// ---------- JUEGO 1 (original, sin cambios de lógica ni textos) ----------
 const R=["A","K","Q","J","10","9","8","7","6","5","4","3","2"],S=["♠","♥","♦","♣"];
 const G1=["AA","KK","QQ","JJ","AKs","AKo"],G2=["1010","99","AQs","AQo","AJs","KQs"],
 G3=["88","77","66","55","44","33","22","A10s","A9s","A8s","A7s","A6s","A5s","A4s","A3s","A2s","KJs","K10s","QJs","Q10s","J10s","J9s","109s","98s","87s","76s","65s","AJo","A10o","KQo","KJo","QJo"];
 const L={jugar:"Jugar",depende:"Depende",botar:"Botar"};
 let st=JSON.parse(localStorage.getItem("pk")||'{"ok":0,"tot":0,"rac":0,"mej":0}'),a,b,el=null;
-const rnd=n=>Math.floor(Math.random()*n);
 function code(){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r);if(h==l)return R[h]+R[l];return R[h]+R[l]+(a.s==b.s?"s":"o")}
 function correct(c){return G1.includes(c)||G2.includes(c)?"jugar":G3.includes(c)?"depende":"botar"}
 function explain(c){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r),su=a.s==b.s,g=l-h;
@@ -54,6 +244,53 @@ function pick(x){if(el)return;el=x;const c=code(),r=correct(c),ok=x==r;st.tot++;
 const t=document.getElementById("ft");t.textContent=ok?"¡Correcto!":"No. La respuesta es «"+L[r]+"».";t.className="t "+(ok?"ok":"no");
 document.getElementById("fe").textContent=c+": "+explain(c);document.getElementById("fb").style.display="block";["j","d","b"].forEach(i=>document.getElementById(i).disabled=true)}
 function reiniciar(){st={ok:0,tot:0,rac:0,mej:0};score();nuevo()}
-score();nuevo();
+
+// ---------- JUEGO 2: ¿Qué mano tengo? ----------
+const Q={s:new Stats("pk2","q"),
+ nuevo(){this.cs=genCat(wpick(QW));this.e=ev5(this.cs);this.done=false;$("q-cards").innerHTML=rowHTML(this.cs,"m");
+  $("q-opts").innerHTML=CATS.map((n,i)=>`<button onclick="Q.pick(${i})">${n}</button>`).join("");$("q-fb").style.display="none"},
+ pick(i){if(this.done)return;this.done=true;const ok=i==this.e.cat;this.s.add(ok);
+  [...$("q-opts").children].forEach((bt,k)=>{bt.disabled=true;bt.style.opacity=1;if(k==this.e.cat)bt.className="ok";else if(k==i)bt.className="bad";else bt.style.opacity=.45});
+  $("q-cards").innerHTML=rowHTML(this.cs,"m",this.e.used);
+  fb("q",ok,ok?"¡Correcto! Es «"+this.e.name+"».":"No. Es «"+this.e.name+"».",whyCat(this.e))},
+ reset(){this.s.reset();this.nuevo()}};
+
+// ---------- JUEGO 3: ¿Cuál gana? ----------
+const W={s:new Stats("pk3","w"),
+ nuevo(){[this.A,this.B]=genPair();this.eA=ev5(this.A);this.eB=ev5(this.B);this.done=false;
+  $("w-cA").innerHTML=rowHTML(this.A,"m");$("w-cB").innerHTML=rowHTML(this.B,"m");$("w-nA").textContent="";$("w-nB").textContent="";
+  $("w-A").className="hand";$("w-B").className="hand";["w-bA","w-bE","w-bB"].forEach(i=>$(i).disabled=false);$("w-fb").style.display="none"},
+ pick(x){if(this.done)return;this.done=true;const d=cmpEv(this.eA,this.eB),r=d>0?"A":d<0?"B":"E",ok=x==r;this.s.add(ok);
+  ["w-bA","w-bE","w-bB"].forEach(i=>$(i).disabled=true);
+  $("w-cA").innerHTML=rowHTML(this.A,"m",this.eA.used);$("w-cB").innerHTML=rowHTML(this.B,"m",this.eB.used);
+  $("w-nA").textContent=describe(this.eA);$("w-nB").textContent=describe(this.eB);if(r!="B")$("w-A").className="hand win";if(r!="A")$("w-B").className="hand win";
+  const rt=r=="E"?"Empate":"Gana la Mano "+r;
+  fb("w",ok,ok?"¡Correcto! "+rt+".":"No. "+rt+".","<b>Mano A:</b> "+describe(this.eA)+"<br><b>Mano B:</b> "+describe(this.eB)+"<br>"+whyWin(this.eA,this.eB))},
+ reset(){this.s.reset();this.nuevo()}};
+
+// ---------- JUEGO 4: ¿Sigo después del flop? ----------
+const F={s:new Stats("pk4","f"),
+ nuevo(){this.g=genFlop();this.done=false;$("f-hole").innerHTML=rowHTML(this.g.hole,"l");$("f-flop").innerHTML=rowHTML(this.g.flop,"l");
+  ["f-bS","f-bR"].forEach(i=>$(i).disabled=false);$("f-fb").style.display="none"},
+ pick(x){if(this.done)return;this.done=true;const inf=this.g.inf,ok=x==inf.seguir;this.s.add(ok);["f-bS","f-bR"].forEach(i=>$(i).disabled=true);
+  const hi=inf.hi;$("f-hole").innerHTML=rowHTML(this.g.hole,"l",hi.length?hi.filter(i=>i<2):null);$("f-flop").innerHTML=rowHTML(this.g.flop,"l",hi.length?hi.filter(i=>i>=2).map(i=>i-2):null);
+  const ans=inf.seguir?"Seguir":"Retirarme";fb("f",ok,ok?"¡Correcto! "+ans+".":"No. Lo correcto es «"+ans+"».",inf.msg+(inf.seguir?" Sigue en la mano.":" Retírate."))},
+ reset(){this.s.reset();this.nuevo()}};
+
+// ---------- RANKING ----------
+const RK=[["Escalera real","10♠J♠Q♠K♠A♠","10-J-Q-K-A del mismo palo."],["Escalera de color","5♥6♥7♥8♥9♥","Cinco seguidas del mismo palo."],["Póker","9♠9♥9♦9♣K♠","Cuatro cartas iguales."],
+ ["Full","Q♠Q♥Q♦4♣4♥","Un trío más una pareja."],["Color","2♦7♦9♦J♦K♦","Cinco del mismo palo, no seguidas."],["Escalera","A♣2♦3♠4♥5♣","Cinco seguidas de cualquier palo."],
+ ["Trío","7♠7♥7♣A♦3♠","Tres cartas iguales."],["Doble pareja","J♠J♦5♣5♥9♠","Dos parejas distintas."],["Pareja","A♠A♥8♣6♦2♠","Dos cartas iguales."],["Carta alta","K♣J♦8♠5♥2♣","Nada: cuenta la carta más alta."]];
+function parseCards(s){return[...s.matchAll(/(10|[2-9AJQK])([♠♥♦♣])/g)].map(m=>({v:{A:14,K:13,Q:12,J:11}[m[1]]||+m[1],s:SUITC.indexOf(m[2])}))}
+$("rk-list").innerHTML=RK.map((x,i)=>`<div class="rk"><div class="h"><b>${i+1}. ${x[0]}</b><span>${i==0?"la mejor":i==9?"la peor":""}</span></div><div class="row5">${rowHTML(parseCards(x[1]),"xs")}</div><p>${x[2]}</p></div>`).join("");
+
+// ---------- navegación ----------
+function menuScores(){[["manos","pk"],["quemano","pk2"],["cualgana","pk3"],["flop","pk4"]].forEach(([k,ls])=>{const s=JSON.parse(localStorage.getItem(ls)||"null");$("m-"+k).textContent=s&&s.tot?`Aciertos ${s.ok}/${s.tot} · mejor racha ${s.mej}`:""})}
+function go(n,noHist){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id=="s-"+n));if(n=="menu")menuScores();window.scrollTo(0,0);
+ if(!noHist)history.replaceState(null,"",n=="menu"?location.pathname:"#"+n)}
+score();nuevo();Q.s.html();Q.nuevo();W.s.html();W.nuevo();F.s.html();F.nuevo();
+const P=new URLSearchParams(location.search),start=P.get("screen")||location.hash.slice(1)||"menu";go($("s-"+start)?start:"menu",true);
+if(P.get("demo")){({manos:()=>pick(correct(code())),quemano:()=>Q.pick(Q.e.cat),cualgana:()=>W.pick("A"),flop:()=>F.pick(F.g.inf.seguir)}[start]||(()=>0))()}
+if(P.get("check"))setTimeout(()=>{const d=document.createElement("pre");d.id="chk";d.style.cssText="position:fixed;top:0;left:0;background:#ff0;color:#000;font-size:28px;z-index:9;margin:0";d.textContent="SW="+document.documentElement.scrollWidth+" CW="+document.documentElement.clientWidth;document.body.appendChild(d)},300);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 </script></body></html>

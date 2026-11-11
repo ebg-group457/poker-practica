@@ -57,6 +57,9 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 .raisebtn{width:100%;margin-top:8px;padding:14px 0;font-size:17px;font-weight:700;border:0;border-radius:12px;color:#fff;background:#1b7a3a}
 .res{width:100%;background:#fff;color:#222;border-radius:12px;padding:12px 14px;margin-top:8px}.res .t{font-weight:800;font-size:19px}.res p{margin:6px 0 8px;font-size:15px;line-height:1.4}.res .rv{font-size:14px;color:#456}
 .hl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 6px;padding:6px 0;border-top:1px solid #eee;font-size:14px}.hl .row5{width:auto;margin:0;gap:3px}
+.whyb{width:100%;margin:0 0 10px;padding:13px;font-size:17px;font-weight:700;border:0;border-radius:10px;background:#2d5fa8;color:#fff}
+.why{display:none;text-align:left;background:#f3f7f4;border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:15px;line-height:1.42;color:#222}.why .h{font-weight:800;font-size:17px;margin-bottom:4px}
+.wy{margin:7px 0}.wy.rg{font-size:13.5px;color:#456;border-top:1px solid #dde;padding-top:7px}.wy.cc{font-weight:800;font-size:16.5px}
 .reset.dk{display:block;width:100%;margin:6px 0 8px;border-color:#0b3d24;color:#0b3d24;font-weight:600}
 </style></head><body>
 
@@ -114,7 +117,7 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 <div class="lbl">Tus cartas</div><div class="row5" id="f-hole"></div>
 <div class="lbl">Flop (mesa)</div><div class="row5" id="f-flop"></div>
 <div class="btns" style="margin-top:6px"><button class="g" id="f-bS" onclick="F.pick(true)">Seguir</button><button class="rd" id="f-bR" onclick="F.pick(false)">Retirarme</button></div>
-<div class="fb" id="f-fb"><div class="t" id="f-ft"></div><p id="f-fe"></p><button class="next" onclick="F.nuevo()">Siguiente mano</button></div>
+<div class="fb" id="f-fb"><div class="t" id="f-ft"></div><p id="f-fe"></p><button class="whyb" id="f-wb" onclick="F.why()">¿Por qué?</button><div class="why" id="f-why"></div><button class="next" onclick="F.nuevo()">Siguiente mano</button></div>
 <div class="score" id="f-sc"></div><button class="reset" onclick="F.reset()">Reiniciar marcador</button>
 <div class="help"><b>Seguir</b> si tienes pareja alta o algo mejor usando tus cartas (pareja con la carta más alta del flop, sobrepareja, doble pareja, trío o más), o si te falta <b>una</b> carta: 4 del mismo palo (color) o 4 seguidas abiertas por los dos lados (escalera).<br><b>Retirarme</b> en todo lo demás.</div>
 </section>
@@ -199,9 +202,79 @@ function flopInfo(hole,flop){const all=hole.concat(flop),e=ev5(all),r=rl,bv=flop
   const ph=hole.find(c=>bv.includes(c.v));
   if(ph)return{seguir:false,caso:"media",hi:idx(c=>c.v==ph.v),msg:"Tu "+r(ph.v)+" hace pareja con una carta baja del flop, no con la más alta ("+r(maxB)+"): no es pareja alta."};
   for(let lo=10;lo>=1;lo--){const win=[0,1,2,3,4].map(k=>lo+k),n=win.filter(v=>vset.has(v)).length;
-    if(n==4)return{seguir:false,caso:"esquinera",hi:idx(c=>win.includes(c.v)||(lo==1&&c.v==14)),msg:"Solo tienes escalera de un lado o con hueco: te sirve una única carta. Es poco probable; retírate."}}
+    if(n==4)return{seguir:false,caso:"esquinera",hi:idx(c=>win.includes(c.v)||(lo==1&&c.v==14)),msg:"Solo tienes escalera de un lado o con hueco: te sirve una única carta. Es poco probable."}}
   if(boardPair||boardTrips)return{seguir:false,caso:"mesa",hi:idx((c,i)=>i>=2&&bc[c.v]>=2),msg:"La "+(boardTrips?"combinación":"pareja")+" es de la mesa y la comparten todos: tus cartas no ligaron nada."};
   return{seguir:false,caso:"nada",hi:[],msg:"No ligaste pareja ni tienes 4 para color o escalera abierta."};}
+// explicación «¿Por qué?» del flop: se arma con las cartas reales y la MISMA regla de flopInfo
+function flopWhy(hole,flop){const inf=flopInfo(hole,flop),all=hole.concat(flop),e=ev5(all),r=rl,bv=flop.map(c=>c.v),maxB=Math.max(...bv);
+  const L=[],bc={};bv.forEach(v=>bc[v]=(bc[v]||0)+1);const hv=hole.map(c=>c.v),seen=k=>all.filter(c=>c.v==k).length;
+  const list=a=>a.length<2?a.join(""):a.slice(0,-1).join(", ")+" o "+a[a.length-1];
+  // 1) lo que tienes hecho ahora
+  let pairT="none",made;
+  const boardPairV=Object.keys(bc).map(Number).filter(v=>bc[v]>=2),onBoard=boardPairV.length?"la "+(bc[boardPairV[0]]==3?"trío":"pareja")+" de "+r(boardPairV[0])+" está en la mesa":"";
+  if(e.cat>=4){made="Ya tienes <b>"+describe(e)+"</b>. Es una mano hecha muy fuerte.";pairT="hecha"}
+  else if(e.cat==3&&bc[e.tb[0]]==3){made="El trío de "+r(e.tb[0])+" está entero en la mesa: es de todos, no cuenta como tuyo. Con tus cartas solo sumas carta alta "+r(Math.max(...hv))+".";pairT="mesa"}
+  else if(e.cat==3){made="Tienes <b>trío de "+r(e.tb[0])+"</b> usando "+(hv[0]==hv[1]?"tu pareja":"tu "+r(e.tb[0]))+". Es muy fuerte.";pairT="trio"}
+  else if(hv[0]!=hv[1]&&bv.includes(hv[0])&&bv.includes(hv[1])){made="Tienes <b>doble pareja</b> con tus dos cartas ("+r(Math.max(...hv))+" y "+r(Math.min(...hv))+"). Es fuerte.";pairT="dosp"}
+  else{ // pareja propia (de mano o con una carta de la mesa) y/o pareja de la mesa
+    let mine=null,how;const single=[...new Set(bv)].filter(v=>bc[v]==1).sort((a,b)=>b-a);
+    if(hv[0]==hv[1]){mine=hv[0];how=mine>maxB?"over":"baja"}
+    else{const m=hv.filter(v=>single.includes(v)).sort((a,b)=>b-a)[0];if(m){mine=m;how=m==maxB?"top":m==Math.min(...single)&&single.length>1?"bajam":"media"}}
+    const pre=onBoard?"Ojo: "+onBoard+" y es de todos, no cuenta como tuya. ":"";
+    if(mine==null){made=pre+"Ahora mismo solo tienes <b>carta alta "+r(Math.max(...hv))+"</b>: tus cartas no hicieron pareja con la mesa.";pairT=onBoard?"mesa":"none"}
+    else if(how=="top"){made=pre+"Tienes <b>pareja alta</b>: tu "+r(mine)+" hace pareja con la carta más alta de la mesa. Eso ya alcanza.";pairT="top"}
+    else if(how=="over"){made=pre+"Tienes <b>sobrepareja</b>: tu pareja de "+r(mine)+" es más alta que todas las cartas de la mesa. Eso ya alcanza.";pairT="over"}
+    else if(how=="baja"){const hi=[...new Set(bv)].filter(v=>v>mine).sort((a,b)=>b-a).map(r);made=pre+"Tienes pareja de "+r(mine)+" en la mano, pero en la mesa hay cartas más altas ("+hi.join(", ")+"). Cualquiera que tenga "+list(hi.map(x=>"un "+x))+" ya te gana. <b>No es pareja alta</b>.";pairT="baja"}
+    else{made=pre+"Tu "+r(mine)+" hace pareja con un "+r(mine)+" de la mesa, pero esa no es la carta más alta (el "+r(maxB)+"). Es una pareja "+(how=="bajam"?"baja":"media")+": cualquiera con un "+r(maxB)+" te gana. <b>No es pareja alta</b>.";pairT=how=="bajam"?"baja1":"media"}}
+  L.push(["Lo que tienes ahora",made]);
+  const madeOK=["hecha","trio","dosp","top","over"].includes(pairT);
+  // 2) escalera
+  const vs=new Set(all.map(c=>c.v));if(vs.has(14))vs.add(1);const has=v=>vs.has(v);
+  const isStr=s=>{for(let lo=1;lo<=10;lo++)if([0,1,2,3,4].every(k=>s.has(lo+k)))return true;return false};
+  let sType="none",sOuts=0,sRanks=[],sTxt;const run4=[];
+  for(let lo=1;lo<=11;lo++)if([0,1,2,3].every(k=>has(lo+k)))run4.push(lo);
+  if(e.cat==4||e.cat>=8){sType="hecha";sTxt="Ya tienes escalera."}
+  else{for(let v=2;v<=14;v++){if(vs.has(v))continue;const s=new Set(vs);s.add(v);if(v==14)s.add(1);if(isStr(s)){sRanks.push(v);sOuts+=4-seen(v)}}
+    const nm=sRanks.map(v=>"un "+r(v));
+    const open=run4.find(lo=>lo>=2&&lo<=10);
+    if(open){sType="abierta";const run=[0,1,2,3].map(k=>r(open+k));sTxt="Tienes 4 seguidas: <b>"+run.join("-")+"</b>, abiertas por los dos lados. Te sirve "+list(nm)+": "+sOuts+" cartas. Es un proyecto de escalera bueno."}
+    else if(sRanks.length==2){sType="doblehueco";sTxt="Tienes cartas para escalera con dos huecos. Te sirve "+list(nm)+" ("+sOuts+" cartas), pero no son 4 seguidas; la regla del juego solo sigue con 4 seguidas abiertas, así que esto no cuenta."}
+    else if(sRanks.length==1){const v=sRanks[0];
+      if(run4.length){sType="punta";const lo=run4[0],run=[0,1,2,3].map(k=>r(lo+k));
+        sTxt="Tienes 4 seguidas (<b>"+run.join("-")+"</b>), pero están en una punta: "+(lo==1?"antes del As no hay nada":"después del As no hay nada")+", así que se puede completar por un solo lado. Solo te sirve "+nm[0]+": "+sOuts+" cartas."}
+      else{sType="hueco";let w=[];for(let lo=1;lo<=10;lo++){const win=[0,1,2,3,4].map(k=>lo+k);if(win.includes(v)&&win.every(x=>x==v||has(x))){w=win;break}}
+        sTxt="Tienes 4 cartas para escalera pero con un <b>hueco en medio</b> ("+w.map(x=>x==v?"__":r(x)).join("-")+"). Solo te sirve "+nm[0]+" para tapar el hueco: "+sOuts+" cartas."}}
+    else{ // ¿3 cartas para escalera? (necesita 2 cartas exactas)
+      let best=0,bw=null;for(let lo=1;lo<=10;lo++){const win=[0,1,2,3,4].map(k=>lo+k),n=win.filter(has).length;if(n>best){best=n;bw=win}}
+      // racha de seguidas más larga
+      let rb=[],cur=[];for(let v=1;v<=14;v++){if(has(v)){cur.push(v);if(cur.length>rb.length)rb=cur.slice()}else cur=[]}
+      if(best>=3){sType="tres";const opts=[];for(let lo=1;lo<=10&&opts.length<3;lo++){const win=[0,1,2,3,4].map(k=>lo+k),miss=win.filter(x=>!has(x));if(miss.length==2)opts.push("un "+r(miss[0])+" y un "+r(miss[1]))}
+        const rtxt=rb.length>=3?"Tienes 3 seguidas: <b>"+rb.map(r).join("-")+"</b>. ":"Tienes 3 cartas cerca para escalera. ";
+        sTxt=rtxt+"Pero para escalera hacen falta <b>5</b>: necesitas que salgan <b>dos cartas exactas</b> en las 2 que quedan por salir (turn y river), por ejemplo "+list(opts)+". Casi nunca pasa: menos de 5 de cada 100 veces."}
+      else{sTxt=rb.length>=2?"Tienes "+rb.map(r).join("-")+" seguidas, pero son solo 2; te faltan 3 cartas para escalera. No hay proyecto.":"No tienes cartas seguidas que sirvan para escalera."}}}
+  L.push(["Escalera",sTxt]);
+  // 3) color
+  const sc=[0,0,0,0];all.forEach(c=>sc[c.s]++);const ms=sc.indexOf(Math.max(...sc)),mn=sc[ms],mineS=hole.filter(c=>c.s==ms).length;
+  let fType="none",fOuts=0,fTxt;
+  if(e.cat==5||e.cat>=8){fType="hecha";fTxt="Ya tienes color (5 del mismo palo)."}
+  else if(mn==4){fType="proyecto";fOuts=9;fTxt="Tienes <b>4 de "+SUITN[ms]+"</b> ("+mineS+" tuya"+(mineS>1?"s":"")+" y "+(4-mineS)+" de la mesa). Te sirve cualquier "+SUITC[ms]+" que quede: 9 cartas."}
+  else if(mn==3&&mineS>0){fType="tres";fTxt="Tienes 3 de "+SUITN[ms]+": necesitas que las 2 cartas que quedan por salir (turn y river) sean las dos de "+SUITN[ms]+". Pasa unas 4 de cada 100 veces: muy débil."}
+  else fTxt="No tienes proyecto de color (para eso necesitas 4 del mismo palo).";
+  L.push(["Color",fTxt]);
+  // 4) probabilidad (cartas que te sirven, sin contar dos veces)
+  let outs=0;if(sType!="hecha"&&fType!="hecha"){for(let v=2;v<=14;v++)for(let s=0;s<4;s++){if(all.some(c=>c.v==v&&c.s==s))continue;if((fType=="proyecto"&&s==ms)||((sType=="abierta"||sType=="hueco"||sType=="punta")&&sRanks.includes(v)))outs++}}
+  if(outs>0){const p4=Math.min(outs*4,100),p2=outs*2;
+    L.push(["Probabilidad","Cartas que te sirven: <b>"+outs+"</b>. Regla fácil: con dos cartas por salir, multiplica por 4 → "+outs+" × 4 ≈ <b>"+p4+" de cada 100</b> veces la completas al final. Solo con la próxima carta: "+outs+" × 2 ≈ "+p2+" de cada 100."+(outs>=8?" Es casi 1 de cada 3: vale la pena.":" Es menos de 1 de cada 5: casi siempre fallas y pagas por nada.")])}
+  // 5) conclusión (siempre la de flopInfo)
+  let why;
+  if(inf.seguir){why=madeOK?"ya tienes una mano que alcanza":fType=="proyecto"?"te falta una sola carta para color y te sirven 9 cartas":"te falta una sola carta para escalera y te sirven 8 cartas";
+    if(!madeOK&&pairT!="none"&&pairT!="mesa")why+=" (la pareja sola no alcanzaría, pero el proyecto sí)"}
+  else{const p=[];p.push(pairT=="none"?"no tienes pareja":pairT=="mesa"?"la pareja de la mesa no es tuya":"tu pareja no es pareja alta");
+    p.push(sType=="tres"?"3 seguidas no bastan: te faltan dos cartas exactas":sType=="hueco"?"la escalera tiene un hueco y solo te sirven "+sOuts+" cartas":sType=="punta"?"la escalera está en una punta y solo te sirven "+sOuts+" cartas":sType=="doblehueco"?"tu escalera no son 4 seguidas":"no tienes proyecto de escalera");
+    if(fType!="none")p.push("el color está lejos");why=p.join(", ")}
+  const regla="Regla del juego: sigues si tienes pareja alta o algo mejor con tus cartas, o si te falta <b>una sola</b> carta con 4 del mismo palo o 4 seguidas abiertas por los dos lados.";
+  return{seguir:inf.seguir,caso:inf.caso,pairT,sType,sOuts,sRanks,fType,fOuts,outs,lines:L,regla,concl:"Por eso: "+(inf.seguir?"sigue":"retírate")+". ("+why[0].toUpperCase()+why.slice(1)+".)"}}
+function flopWhyHTML(w){return w.lines.map(([t,x])=>"<div class=\"wy\"><b>"+t+":</b> "+x+"</div>").join("")+"<div class=\"wy rg\">"+w.regla+"</div><div class=\"wy cc "+(w.seguir?"ok":"no")+"\">"+w.concl+"</div>"}
 // generadores
 const rnd=n=>Math.floor(Math.random()*n);
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -452,7 +525,10 @@ const W={s:new Stats("pk3","w"),
 // ---------- JUEGO 4: ¿Sigo después del flop? ----------
 const F={s:new Stats("pk4","f"),
  nuevo(){this.g=genFlop();this.done=false;$("f-hole").innerHTML=rowHTML(this.g.hole,"l");$("f-flop").innerHTML=rowHTML(this.g.flop,"l");
-  ["f-bS","f-bR"].forEach(i=>$(i).disabled=false);$("f-fb").style.display="none"},
+  ["f-bS","f-bR"].forEach(i=>$(i).disabled=false);$("f-fb").style.display="none";$("f-why").style.display="none";$("f-wb").textContent="¿Por qué?"},
+ set(h,f){const P=t=>t.match(/(10|[2-9TJQKA])([shdc])/gi).map(x=>({v:{A:14,K:13,Q:12,J:11,T:10}[x.slice(0,-1).toUpperCase()]||+x.slice(0,-1),s:"shdc".indexOf(x.slice(-1).toLowerCase())}));
+  const hole=P(h),flop=P(f);this.nuevo();this.g={hole,flop,inf:flopInfo(hole,flop)};$("f-hole").innerHTML=rowHTML(hole,"l");$("f-flop").innerHTML=rowHTML(flop,"l")},
+ why(){const b=$("f-why"),open=b.style.display=="block";if(!open){const w=flopWhy(this.g.hole,this.g.flop);b.innerHTML="<div class=\"h\">¿Por qué «"+(w.seguir?"Seguir":"Retirarme")+"»?</div>"+flopWhyHTML(w)}b.style.display=open?"none":"block";$("f-wb").textContent=open?"¿Por qué?":"Ocultar explicación"},
  pick(x){if(this.done)return;this.done=true;const inf=this.g.inf,ok=x==inf.seguir;this.s.add(ok);["f-bS","f-bR"].forEach(i=>$(i).disabled=true);
   const hi=inf.hi;$("f-hole").innerHTML=rowHTML(this.g.hole,"l",hi.length?hi.filter(i=>i<2):null);$("f-flop").innerHTML=rowHTML(this.g.flop,"l",hi.length?hi.filter(i=>i>=2).map(i=>i-2):null);
   const ans=inf.seguir?"Seguir":"Retirarme";fb("f",ok,ok?"¡Correcto! "+ans+".":"No. Lo correcto es «"+ans+"».",inf.msg+(inf.seguir?" Sigue en la mano.":" Retírate."))},
@@ -531,7 +607,7 @@ function go(n,noHist){document.querySelectorAll(".screen").forEach(s=>s.classLis
 score();nuevo();Q.s.html();Q.nuevo();W.s.html();W.nuevo();F.s.html();F.nuevo();
 const P=new URLSearchParams(location.search),start=P.get("screen")||location.hash.slice(1)||"menu";go($("s-"+start)?start:"menu",true);
 if(start=="sim"&&P.get("demo")){SIM.demo=P.get("demo");SIM.demoAll=!!P.get("all");SIM.delay=+(P.get("delay")||40);SIM.enter()}
-else if(P.get("demo")){({manos:()=>pick(correct(code())),quemano:()=>Q.pick(Q.e.cat),cualgana:()=>W.pick("A"),flop:()=>F.pick(F.g.inf.seguir)}[start]||(()=>0))()}
+else if(P.get("demo")){({manos:()=>pick(correct(code())),quemano:()=>Q.pick(Q.e.cat),cualgana:()=>W.pick("A"),flop:()=>{if(P.get("fh"))F.set(P.get("fh"),P.get("ff"));F.pick(P.get("ans")?P.get("ans")=="s":F.g.inf.seguir);if(P.get("why"))F.why()}}[start]||(()=>0))()}
 if(P.get("check"))setTimeout(()=>{const d=document.createElement("pre");d.id="chk";d.style.cssText="position:fixed;top:0;left:0;background:#ff0;color:#000;font-size:28px;z-index:9;margin:0";d.textContent="SW="+document.documentElement.scrollWidth+" CW="+document.documentElement.clientWidth;document.body.appendChild(d)},300);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 </script></body></html>

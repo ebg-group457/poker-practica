@@ -49,7 +49,7 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 .felt .card.m{height:80px}.slot{flex:1 1 0;max-width:62px;height:80px;border-radius:9px;border:2px dashed rgba(255,255,255,.25)}
 .log{width:100%;background:rgba(0,0,0,.25);border-radius:10px;padding:5px 10px;font-size:13px;line-height:1.4;color:#e4f3ea;min-height:42px}.log b{color:#fff}
 .me{width:100%;background:rgba(0,0,0,.22);border:2px solid transparent;border-radius:14px;padding:6px 8px;margin-top:8px}.me .top{display:flex;justify-content:space-between;align-items:center;font-size:14px;gap:6px}
-.me .row5{margin:4px 0 2px;gap:10px}.me .card.l{width:72px;height:100px}.me .st{text-align:center;font-size:13px;color:#ffd54a;font-weight:700}
+.me .row5{margin:2px 0 0;gap:10px}.me .card.l{width:64px;height:88px}.me .card.l .r{font-size:28px}.me .card.l .s{font-size:30px}.me .st{text-align:center;font-size:13px;color:#ffd54a;font-weight:700}
 .hint{width:100%;background:#fff8d6;color:#4a3b00;border-radius:12px;padding:8px 11px;font-size:13.5px;line-height:1.38;margin-top:8px}
 .acts{width:100%;margin-top:8px}.acts .btns{gap:6px}.acts .btns button{padding:14px 2px;font-size:16px;line-height:1.15;min-width:0}
 .qs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:8px}.qs button{padding:11px 0;font-size:14px;font-weight:700;border:0;border-radius:10px;background:#f2f2f2;color:#0b3d24}
@@ -61,6 +61,18 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 .why{display:none;text-align:left;background:#f3f7f4;border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:15px;line-height:1.42;color:#222}.why .h{font-weight:800;font-size:17px;margin-bottom:4px}
 .wy{margin:7px 0}.wy.rg{font-size:13.5px;color:#456;border-top:1px solid #dde;padding-top:7px}.wy.cc{font-weight:800;font-size:16.5px}
 .reset.dk{display:block;width:100%;margin:6px 0 8px;border-color:#0b3d24;color:#0b3d24;font-weight:600}
+.card.mn{width:30px;height:42px;border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,.35);flex:0 0 auto}.card.mn .r{font-size:13px;line-height:1.1}.card.mn .s{font-size:13px;line-height:1}
+.card.own{outline:3px solid #4fc3f7;outline-offset:-1px}
+.cslot{width:30px;height:42px;border-radius:5px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#ffd54a;flex:0 0 auto;line-height:1;text-align:center}
+.mrow{display:flex;align-items:center;gap:8px;margin-top:3px}.mrow .row5{width:auto;flex:0 0 auto;gap:5px;margin:0}.mrow .card.l{width:58px;height:82px}.cbsum{width:100%;margin-top:6px;background:rgba(79,195,247,.16);border:1px solid rgba(79,195,247,.55);border-radius:10px;padding:5px 9px;font-size:12.5px;line-height:1.35;color:#e9f7ff;text-align:left}.mrow .cbsum{margin:0;flex:1;min-width:0;font-size:12px;line-height:1.3;padding:5px 7px}.cbsum u{color:#4fc3f7;font-weight:700;white-space:nowrap}
+.cbp{width:100%;margin-top:10px;background:rgba(0,0,0,.25);border-radius:12px;padding:6px 8px}
+.cbh{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:0;color:#fff;font-size:16px;font-weight:800;padding:6px 2px}.cbh span{font-size:13px;color:#4fc3f7;font-weight:700}
+.cbl{font-size:12px;color:#cfe9da;margin:0 2px 4px}.cbl i{display:inline-block;width:11px;height:11px;border:2px solid #4fc3f7;border-radius:3px;vertical-align:-1px;margin-right:3px}
+.cbr{display:flex;align-items:center;gap:6px;padding:5px 2px;border-top:1px solid rgba(255,255,255,.1)}.cbr .nm{flex:1;min-width:0;font-size:13px;line-height:1.25}.cbr .nm b{display:block;font-size:14px}
+.cbr .ss5{display:flex;gap:3px;flex:0 0 auto}.cbr.best{background:rgba(255,213,74,.18);border-radius:8px;box-shadow:inset 0 0 0 2px #ffd54a}.cbr.best .nm small{color:#ffd54a;font-weight:800}
+.cbr.tienes .nm small{color:#9be7a8;font-weight:700}.cbr.f1 .nm small{color:#ffe082}.cbr.f2 .nm small,.cbr.f3 .nm small{color:#ffb74d}.cbr.imposible,.cbr.mejor{opacity:.5}.cbr.imposible .cslot>*,.cbr.mejor .cslot>*{visibility:hidden}.cbr.imposible .cslot,.cbr.mejor .cslot{color:transparent}
+.cbr .nm small{display:block;font-size:12px}
+.cbend{border-top:1px solid #eee;margin-top:6px;padding-top:6px;font-size:14px;line-height:1.4}.cbend b{font-size:15px}.cbend ul{margin:4px 0 6px;padding-left:18px}.cbend li{margin:3px 0}
 </style></head><body>
 
 <!-- MENÚ -->
@@ -455,6 +467,93 @@ function botDecide(g,rand){rand=rand||Math.random;const i=g.toAct,p=g.players[i]
   if(f.lvl==2)return(L.toCall<=pot*.8||x<.4)?cc():fold();
   if(f.lvl==1)return(N>=(g.street==1?3:5)||x<.25)?cc():fold();
   return x<.05?rz(g.curBet+(pot+L.toCall)*.75):(x<.12&&N>=5?cc():fold())}
+// ---- Mis combinaciones: progreso hacia cada mano con tus 2 cartas + la mesa (probado en tests/combos.test.js) ----
+// requisito {v,s}: v=0 cualquier valor, s=-1 cualquier palo. kick: cartas libres (no cuentan como faltantes).
+const CB_T={};
+function cbTemplates(cat){if(CB_T[cat])return CB_T[cat];const T=[],R=[14,13,12,11,10,9,8,7,6,5,4,3,2],rk=(v,n)=>Array.from({length:n},()=>({v,s:-1})),
+  str=h=>h==5?[14,2,3,4,5]:[h-4,h-3,h-2,h-1,h];
+ if(cat==9)for(let s=0;s<4;s++)T.push({core:[10,11,12,13,14].map(v=>({v,s})),kick:0,key:[14],s});
+ else if(cat==8){for(let s=0;s<4;s++)for(let h=13;h>=5;h--)T.push({core:str(h).map(v=>({v,s})),kick:0,key:[h],h,s})}
+ else if(cat==7)R.forEach(a=>T.push({core:rk(a,4),kick:1,key:[a],a}));
+ else if(cat==6)R.forEach(a=>R.forEach(b=>{if(a!=b)T.push({core:rk(a,3).concat(rk(b,2)),kick:0,key:[a,b],a,b})}));
+ else if(cat==5)for(let s=0;s<4;s++)T.push({core:[0,1,2,3,4].map(()=>({v:0,s})),kick:0,key:[],s});
+ else if(cat==4)for(let h=14;h>=5;h--)T.push({core:str(h).map(v=>({v,s:-1})),kick:0,key:[h],h});
+ else if(cat==3)R.forEach(a=>T.push({core:rk(a,3),kick:2,key:[a],a}));
+ else if(cat==2)R.forEach(a=>R.forEach(b=>{if(a>b)T.push({core:rk(a,2).concat(rk(b,2)),kick:1,key:[a,b],a,b})}));
+ else if(cat==1)R.forEach(a=>T.push({core:rk(a,2),kick:3,key:[a],a}));
+ else T.push({core:[],kick:5,key:[]});
+ return CB_T[cat]=T}
+// encaja una plantilla con las cartas conocidas (tuyas primero)
+function cbMatch(t,hole,board){const kn=hole.map(c=>({c,h:1})).concat(board.map(c=>({c,h:0}))),used=new Set();let miss=0,hl=0;
+ const slots=t.core.map(sp=>{let best=-1;kn.forEach((k,i)=>{if(used.has(i)||(sp.v&&k.c.v!=sp.v)||(sp.s>=0&&k.c.s!=sp.s))return;
+   if(best<0||k.h>kn[best].h||(k.h==kn[best].h&&k.c.v>kn[best].c.v))best=i});
+  if(best<0){miss++;return{need:sp}}used.add(best);hl+=kn[best].h;return{c:kn[best].c,own:!!kn[best].h}});
+ const vals=slots.filter(x=>x.c).map(x=>x.c.v).sort((a,b)=>b-a);
+ return{t,slots,miss,hole:hl,vals,used}}
+const cbLex=(a,b)=>{for(let i=0;i<Math.max(a.length,b.length);i++){const d=(a[i]||0)-(b[i]||0);if(d)return d}return 0};
+// mejor progreso hacia la categoría. made=true acepta cartas solo de la mesa; si no, exige usar al menos una tuya
+function cbBest(cat,hole,board){let made=null,draw=null;
+ for(const t of cbTemplates(cat)){const m=cbMatch(t,hole,board);
+  if(m.miss==0){if(!made||(m.hole>0)-(made.hole>0)>0||((m.hole>0)==(made.hole>0)&&(cbLex(m.t.key,made.t.key)>0||(!cbLex(m.t.key,made.t.key)&&(m.hole>made.hole||(m.hole==made.hole&&cbLex(m.vals,made.vals)>0))))))made=m}
+  else if(m.hole>0){if(!draw||m.miss<draw.miss||(m.miss==draw.miss&&(m.hole>draw.hole||(m.hole==draw.hole&&(cbLex(m.t.key,draw.t.key)>0||(!cbLex(m.t.key,draw.t.key)&&cbLex(m.vals,draw.vals)>0))))))draw=m}}
+ return{made,draw}}
+function cbMadeWithHole(cat,hole,board){for(const t of cbTemplates(cat)){const m=cbMatch(t,hole,board);if(m.miss==0&&m.hole>0)return true}return false}
+const cbUn=v=>"un "+rl(v);
+function cbJoinO(a){return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" o "+a[a.length-1]}
+function cbJoinY(a){return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" y "+a[a.length-1]}
+// cartas que completan la fila en la próxima carta (sin contar dos veces y sin las que solo sirven a la mesa)
+function cbOuts(cat,hole,board){const k=new Set(hole.concat(board).map(ckey)),out=[];
+ for(const c of fullDeck())if(!k.has(ckey(c))&&cbMadeWithHole(cat,hole,board.concat([c])))out.push(c);return out}
+function cbOutsText(outs,hole,board){const k=new Set(hole.concat(board).map(ckey)),unseen=fullDeck().filter(c=>!k.has(ckey(c)));
+ const su=[...new Set(outs.map(c=>c.s))];
+ if(su.length==1&&outs.length>=5&&outs.length==unseen.filter(c=>c.s==su[0]).length)return"cualquier "+SUITC[su[0]];
+ const byV={};outs.forEach(c=>(byV[c.v]=byV[c.v]||[]).push(c));
+ const parts=Object.keys(byV).map(Number).sort((a,b)=>b-a).map(v=>byV[v].length==unseen.filter(c=>c.v==v).length&&byV[v].length>1?cbUn(v):byV[v].map(cstr).join(", "));
+ return cbJoinO(parts)}
+function cbNeedText(m){const sp=m.slots.filter(x=>x.need).map(x=>x.need),r=[];const ns={};
+ const nv={};sp.forEach(n=>{if(n.v&&n.s>=0)r.push(rl(n.v)+SUITC[n.s]);else if(n.v){if(!nv[n.v])r.push(n.v);nv[n.v]=(nv[n.v]||0)+1}else ns[n.s]=(ns[n.s]||0)+1});
+ r.forEach((x,i)=>{if(typeof x=="number")r[i]=nv[x]==1?cbUn(x):["","","dos ","tres ","cuatro "][nv[x]]+rl(x)});
+ Object.keys(ns).forEach(s=>r.push(ns[s]+" "+SUITC[s]+" más"));return cbJoinY(r)}
+function cbLabel(cat,m){const t=m.t,r=rl;switch(cat){case 9:return"Escalera real";case 8:return t.h==5?"Escalera de color A-2-3-4-5":"Escalera de color al "+r(t.h);
+ case 7:return"Póker de "+r(t.a);case 6:return"Full de "+r(t.a)+" con "+r(t.b);case 5:return"Color de "+SUITC[t.s]+" al "+r(m.vals[0]);
+ case 4:return t.h==5?"Escalera A-2-3-4-5":"Escalera al "+r(t.h);case 3:return"Trío de "+r(t.a);case 2:return"Doble pareja de "+r(t.a)+" y "+r(t.b);case 1:return"Pareja de "+r(t.a);default:return"Carta alta "+r(m.vals[0]||0)}}
+// rellena las cartas libres (kickers) con las más altas que queden, sin repetir valores
+function cbKick(m,hole,board){const kn=hole.map(c=>({c,own:true})).concat(board.map(c=>({c,own:false}))).filter(k=>!m.slots.some(x=>x.c===k.c)).sort((a,b)=>b.c.v-a.c.v);
+ const cv=new Set(m.slots.filter(x=>x.c).map(x=>x.c.v)),pick=[];
+ for(const k of kn)if(pick.length<m.t.kick&&!cv.has(k.c.v)&&!pick.some(p=>p.c.v==k.c.v))pick.push(k);
+ for(const k of kn)if(pick.length<m.t.kick&&!pick.includes(k))pick.push(k);
+ const out=pick.map(k=>({c:k.c,own:k.own,kick:true}));while(out.length<m.t.kick)out.push({need:null,kick:true});return out}
+// todas las filas, de Escalera real a Carta alta
+function cbAll(hole,board){const left=5-board.length,all=hole.concat(board),hk=new Set(hole.map(ckey)),rows=[];
+ let E,bestCards=null,coreKeys=null;
+ if(all.length>=5){const b=best5(all);E=b.ev;const u=E.used.map(i=>b.cards[i]);bestCards=u.concat(b.cards.filter((c,i)=>!E.used.includes(i)));coreKeys=new Set(u.map(ckey))}
+ else{const pp=hole[0].v==hole[1].v,hv=Math.max(hole[0].v,hole[1].v),lv=Math.min(hole[0].v,hole[1].v);E={cat:pp?1:0,tb:pp?[hv]:[hv,lv]};E.name=CATS[E.cat]}
+ for(const cat of [9,8,7,6,5,4,3,2,1,0]){const {made,draw}=cbBest(cat,hole,board),row={cat,name:CATS[cat],left};
+  if(cat==E.cat){row.st="best";row.label=bestCards?describe(E):(E.cat?"Pareja de "+rl(E.tb[0]):"Carta alta "+rl(E.tb[0]));
+   if(bestCards){row.slots=bestCards.map(c=>({c,own:hk.has(ckey(c))}));row.mesa=E.cat>0&&![...coreKeys].some(k=>hk.has(k))}
+   else{row.slots=hole.slice().sort((a,b)=>b.v-a.v).map(c=>({c,own:true}));while(row.slots.length<5)row.slots.push({need:null,kick:true});row.mesa=false}}
+  else if(made&&cat>0&&cat<E.cat){row.st="tienes";row.label=cbLabel(cat,made);row.slots=made.slots.concat(cbKick(made,hole,board));row.mesa=made.hole==0}
+  else if(cat<E.cat){row.st="mejor";const m=draw||made;row.slots=m?m.slots.slice():[]}
+  else if(!draw||draw.miss>left){row.st="imposible";row.slots=draw?draw.slots.slice():[]}
+  else{row.slots=draw.slots.concat(cbKick(draw,hole,board));row.miss=draw.miss;row.label=cbLabel(cat,draw);
+   if(draw.miss==1){row.st="f1";row.outs=cbOuts(cat,hole,board);row.need=cbOutsText(row.outs,hole,board);
+    if(!row.outs.length){row.st="imposible"}}
+   else{row.st=draw.miss==2?"f2":"f3";row.need=cbNeedText(draw)}}
+  while(row.slots.length<5)row.slots.push({need:null,kick:true});rows.push(row)}
+ return{rows,best:E,left,street:board.length==0?0:board.length-2}}
+const CB_STREET=["Antes del flop","Flop","Turn","River"];
+function cbSummary(r){const b=r.rows.find(x=>x.st=="best"),f1=r.rows.filter(x=>x.st=="f1");
+ let s=CB_STREET[r.street]+": tienes "+b.label+(b.mesa?" (de la mesa, es de todos)":"")+".";
+ if(r.left==0)return CB_STREET[r.street]+": tu mano final es "+b.label+(b.mesa?" (de la mesa, es de todos)":"")+".";
+ if(f1.length)s+=" Te falta 1 carta para "+f1.slice(0,2).map(x=>x.name+" ("+x.need+", "+x.outs.length+" carta"+(x.outs.length==1?"":"s")+")").join(" y para ")+".";
+ else if(r.street>0)s+=" No te falta 1 sola carta para nada mejor.";
+ else{const f=r.rows.find(x=>x.st=="f2"&&x.cat>=4);s+=f?" Si salen "+f.need+", tendrías "+f.name+".":" Faltan 5 cartas por salir."}
+ return s}
+// lo que hiciste en la mano: filas hechas al final y proyectos del flop
+function cbHand(hole,board){const fin=cbAll(hole,board),made=fin.rows.filter(x=>x.st=="best"||x.st=="tienes"),draws=[];
+ if(board.length>=3){const fl=cbAll(hole,board.slice(0,3));fl.rows.forEach(x=>{if((x.st=="f1"||(x.st=="f2"&&(x.cat==4||x.cat==5)))&&x.cat>fl.best.cat){const f=fin.rows.find(y=>y.cat==x.cat);
+   draws.push({cat:x.cat,name:x.name,miss:x.miss,need:x.need,outs:x.outs?x.outs.length:0,hit:f.st=="best"||f.st=="tienes",done:board.length==5})}})}
+ return{fin,made,draws}}
 /*SIM-END*/
 
 
@@ -547,7 +646,8 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
  load(){const d=JSON.parse(localStorage.getItem(this.key)||"null");this.coach=d?d.coach!==false:true;this.g=simNew(d&&d.st);if(d){this.g.dealer=d.d;this.g.hand=d.h;this.g.rebuys=d.rb||0}},
  save(){const g=this.g,o=g.over;localStorage.setItem(this.key,JSON.stringify({st:g.players.map(p=>p.stack+(o?0:p.total)),d:o?g.dealer:(g.dealer+3)%4,h:o?g.hand:g.hand-1,coach:this.coach,rb:g.rebuys}))},
  enter(){if(!this.g)this.load();if(!this.g.result&&this.g.over)this.next();else{this.render();this.loop()}},
- next(){clearTimeout(this.t);simStart(this.g);this.showAll=false;this.amt=0;this.render();this.loop()},
+ next(){clearTimeout(this.t);let dk=null;if(this.rig){const f=this.rig.match(/(10|[2-9TJQKA])[shdc]/g).map(t=>({v:{A:14,K:13,Q:12,J:11,T:10}[t.slice(0,-1)]||+t.slice(0,-1),s:"shdc".indexOf(t.slice(-1))})),k=new Set(f.map(ckey));dk=f.concat(shuffle(fullDeck().filter(c=>!k.has(ckey(c)))));this.rig=null}
+  simStart(this.g,dk);this.showAll=false;this.amt=0;this.render();this.loop()},
  on(){return $("s-sim").classList.contains("on")},
  loop(){clearTimeout(this.t);const g=this.g;if(!this.on())return;
   if(g.over){this.save();if(this.demo)this.demoEnd();return}
@@ -574,11 +674,12 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
   const L=myTurn?simLegal(g):null,pot=g.over?g.result.pot:potTotal(g);
   h+=`<div class="felt"><div class="potl">Bote: <b>${pot}</b>${g.over?"":L?` · Para igualar: <b>${L.toCall}</b>`:g.curBet?` · Apuesta actual: <b>${g.curBet}</b>`:""}</div><div class="row5">`;
   for(let k=0;k<5;k++){const c=g.board[k];h+=c?cardV(c,"m",sd?(hk.has(ckey(c))?"hi":"dim"):""):'<div class="slot"></div>'}
-  h+=`</div></div><div class="log" id="sim-log">${g.log.slice(-4).map((l,k,a)=>k==a.length-1?"<b>"+l+"</b>":l).join("<br>")}</div>`;
+  h+=`</div></div><div class="log" id="sim-log">${g.log.slice(-3).map((l,k,a)=>k==a.length-1?"<b>"+l+"</b>":l).join("<br>")}</div>`;
   const bd=(0==g.dealer?'<i class="bd d">D</i>':"")+(0==g.sb?'<i class="bd">CP</i>':"")+(0==g.bb?'<i class="bd">CG</i>':"");
   const myst=sd&&!me.folded?describe(g.sd[0].ev):me.folded?"Te retiraste":me.allin?"All-in":myTurn?"Te toca":g.over?"":"Esperando a "+P[g.toAct].name+"…";
+  const CB=me.hole.length==2?cbAll(me.hole,g.board):null,cbs=CB?`<div class="cbsum" onclick="SIM.cbGo()">📋 ${me.folded&&!g.over?"(Te retiraste) ":""}${cbSummary(CB)} <u>${this.cbOpen?"Ver tabla ↓":"Abrir tabla"}</u></div>`:"";
   h+=`<div class="me${myTurn?" turn":""}${g.over&&g.result.winners.includes(0)?" win":""}"><div class="top"><b>Tú${bd}</b><span>${me.stack} fichas${me.bet?" · apuesta "+me.bet:""}</span></div>
-   <div class="row5 mine">${me.hole.map(c=>cardV(c,"l",hk.size?(hk.has(ckey(c))?"hi":""):"")).join("")}</div><div class="st">${myst}</div></div>`;
+   <div class="mrow"><div class="row5 mine">${me.hole.map(c=>cardV(c,"l",hk.size?(hk.has(ckey(c))?"hi":""):"")).join("")}</div>${cbs}</div><div class="st">${myst}</div></div>`;
   if(myTurn&&this.coach)h+=`<div class="hint">💡 ${simCoach(g).text}</div>`;
   if(!g.over){const Lx=L||{toCall:0,canCheck:true,canRaise:false,minTo:0,maxTo:0,isBet:true},dis=myTurn?"":"disabled";
    if(myTurn&&(this.amt<Lx.minTo||this.amt>Lx.maxTo))this.amt=Lx.minTo;
@@ -591,10 +692,32 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
    let lines="";if(sd)P.forEach((p,i)=>{if(!p.folded)lines+=`<div class="hl"><span>${ws.includes(i)?"🏆 ":""}<b>${p.isUser?"Tú":p.name}:</b> ${describe(g.sd[i].ev)}</span><div class="row5">${g.sd[i].cards.map(c=>cardV(c,"xs",ws.includes(i)&&hk.has(ckey(c))?"hi":"")).join("")}</div></div>`});
    if(this.showAll)P.forEach(p=>{if(p.folded)lines+=`<div class="hl"><span><b>${p.isUser?"Tú":p.name}</b> (botó)</span><div class="row5">${p.hole.map(c=>cardV(c,"xs")).join("")}</div></div>`});
    const busted=P.filter(p=>p.stack<=0).map(p=>p.isUser?"Te quedaste sin fichas: en la siguiente mano recompras 200.":p.name+" se quedó sin fichas: recompra 200 en la siguiente mano.");
-   h+=`<div class="res" id="sim-res"><div class="t ${won?"ok":"no"}">${title}</div><p>${R.text.join("<br>")}</p>${lines}<p class="rv">${R.review}</p>${busted.map(b=>"<p class='rv'>"+b+"</p>").join("")}
+   h+=`<div class="res" id="sim-res"><div class="t ${won?"ok":"no"}">${title}</div><p>${R.text.join("<br>")}</p>${lines}<p class="rv">${R.review}</p>${busted.map(b=>"<p class='rv'>"+b+"</p>").join("")}${this.cbEnd()}
     <button class="reset dk" onclick="SIM.toggleAll()">${this.showAll?"Ocultar cartas de los que botaron":"Ver cartas de todos"}</button><button class="next" onclick="SIM.next()">Siguiente mano</button></div>`}
+  if(CB)h+=this.cbPanel(CB);
   h+=`<button class="reset" onclick="SIM.reset()">Reiniciar fichas</button><div class="help">Ciegas 1/2. Cada jugador empieza con 200 fichas; si alguien se queda sin fichas, recompra 200. El botón <b>D</b> rota cada mano; <b>CP</b> y <b>CG</b> son las ciegas pequeña y grande.</div>`;
   $("sim-root").innerHTML=h},
+ // «Mis combinaciones»
+ cbOpen:localStorage.getItem("pk5cb")!=="0",
+ toggleCb(){this.cbOpen=!this.cbOpen;localStorage.setItem("pk5cb",this.cbOpen?"1":"0");this.render();if(this.cbOpen)this.cbGo()},
+ cbGo(){if(!this.cbOpen){this.toggleCb();return}const e=$("sim-cb");if(e)e.scrollIntoView({behavior:"smooth",block:"start"})},
+ cbRow(x,left){const n=x.outs?x.outs.length:0,mesa=x.mesa?" · de la mesa, es de todos":"";
+  const txt={best:"✅ Tu mejor mano: "+x.label+mesa,tienes:"✅ La tienes: "+x.label+mesa,f1:"🟡 Te falta 1: "+x.need+": "+n+" carta"+(n==1?"":"s"),f2:"🟠 Te faltan 2: "+x.need,f3:"⚪ Te faltan "+x.miss+": "+x.need,
+   imposible:left==0?"⚪ No la tienes":"⚪ Ya no es posible",mejor:"Ya tienes algo mejor"}[x.st];
+  const sl=x.slots.map(o=>o.c?cardV(o.c,"mn",o.own?"own":""):`<div class="cslot">${o.need?(o.need.v?rl(o.need.v):"")+(o.need.s>=0?`<span class="${o.need.s==1||o.need.s==2?"red":""}">${SUITC[o.need.s]}</span>`:""):""}</div>`).join("");
+  return`<div class="cbr ${x.st}"><div class="nm"><b>${x.name}</b><small>${txt}</small></div><div class="ss5">${sl}</div></div>`},
+ cbPanel(CB){return`<div class="cbp" id="sim-cb"><button class="cbh" onclick="SIM.toggleCb()">📋 Mis combinaciones<span>${this.cbOpen?"Ocultar ▲":"Ver ▼"}</span></button>`+
+  (this.cbOpen?`<div class="cbl"><b>${CB_STREET[CB.street]}</b> · <i></i>tus cartas · hueco punteado = lo que te falta${CB.left?" · faltan "+CB.left+" carta"+(CB.left==1?"":"s")+" por salir":""}</div>`+CB.rows.map(x=>this.cbRow(x,CB.left)).join(""):"")+`</div>`},
+ cbEnd(){const g=this.g,P=g.players,me=P[0],R=g.result,H=cbHand(me.hole,g.board),b=H.made[0],others=H.made.slice(1),sd=R.type=="showdown",ws=R.winners;
+  let res;if(me.folded)res="te retiraste antes de verla";else if(!sd)res=ws.includes(0)?"🏆 ganaste porque todos se retiraron":"";
+  else if(ws.includes(0))res=ws.length>1?"🤝 empataste":"🏆 con esta ganaste";
+  else{const w=ws[0];res="❌ perdió contra "+describe(g.sd[w].ev)+" de "+P[w].name}
+  let li=`<li>Tu mejor: <b>${b.label}</b>${b.mesa?" (de la mesa, es de todos)":""}${res?" → "+res:""}.</li>`;
+  if(others.length)li+=`<li>También tenías: ${others.map(x=>x.label+(x.mesa?" (de la mesa)":"")).join(", ")}${sd&&!ws.includes(0)&&!me.folded?". Valen menos, así que tampoco alcanzaban":""}.</li>`;
+  const cartas=n=>n+" carta"+(n==1?"":"s");
+  H.draws.filter(d=>d.hit||d.cat>b.cat).forEach(d=>{li+=`<li>En el flop te faltaba${d.miss==1?" 1":"n 2"} para <b>${d.name}</b> (${d.need}${d.miss==1?", "+cartas(d.outs):""}): ${d.hit?"✅ ¡salió!":d.done?"no salió.":"la mano terminó antes del river."}</li>`});
+  if(g.board.length>=3&&!H.draws.filter(d=>d.hit||d.cat>b.cat).length)li+=`<li>En el flop no te faltaba 1 sola carta para nada mejor que lo que terminaste teniendo.</li>`;
+  return`<div class="cbend"><b>📋 Tus combinaciones en esta mano</b>${me.folded?" <span class='rv'>(con la mesa que salió)</span>":""}<ul>${li}</ul></div>`},
  // modo demo para capturas: ?screen=sim&demo=start|flop|showdown
  demoUser(){const g=this.g,d=this.demo;const L=simLegal(g);if(d=="start"||(d=="flop"&&g.street>=1)||(d=="bet"&&g.street>=1&&L.toCall>0))return;setTimeout(()=>this.user(L.canCheck?"check":"call"),this.delay)},
  demoEnd(){if(this.demo=="showdown"&&this.g.result.type=="showdown"){if(this.demoAll)this.toggleAll();setTimeout(()=>$("sim-res").scrollIntoView(),50);return}setTimeout(()=>this.next(),this.delay)}};
@@ -606,7 +729,7 @@ function go(n,noHist){document.querySelectorAll(".screen").forEach(s=>s.classLis
  if(!noHist)history.replaceState(null,"",n=="menu"?location.pathname:"#"+n)}
 score();nuevo();Q.s.html();Q.nuevo();W.s.html();W.nuevo();F.s.html();F.nuevo();
 const P=new URLSearchParams(location.search),start=P.get("screen")||location.hash.slice(1)||"menu";go($("s-"+start)?start:"menu",true);
-if(start=="sim"&&P.get("demo")){SIM.demo=P.get("demo");SIM.demoAll=!!P.get("all");SIM.delay=+(P.get("delay")||40);SIM.enter()}
+if(start=="sim"&&P.get("demo")){SIM.demo=P.get("demo");SIM.rig=P.get("rig");if(SIM.rig){SIM.g=simNew();SIM.g.over=true;SIM.g.result=null}SIM.demoAll=!!P.get("all");SIM.delay=+(P.get("delay")||40);SIM.enter()}
 else if(P.get("demo")){({manos:()=>pick(correct(code())),quemano:()=>Q.pick(Q.e.cat),cualgana:()=>W.pick("A"),flop:()=>{if(P.get("fh"))F.set(P.get("fh"),P.get("ff"));F.pick(P.get("ans")?P.get("ans")=="s":F.g.inf.seguir);if(P.get("why"))F.why()}}[start]||(()=>0))()}
 if(P.get("check"))setTimeout(()=>{const d=document.createElement("pre");d.id="chk";d.style.cssText="position:fixed;top:0;left:0;background:#ff0;color:#000;font-size:28px;z-index:9;margin:0";d.textContent="SW="+document.documentElement.scrollWidth+" CW="+document.documentElement.clientWidth;document.body.appendChild(d)},300);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");

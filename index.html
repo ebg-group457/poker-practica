@@ -70,9 +70,28 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 .cbl{font-size:12px;color:#cfe9da;margin:0 2px 4px}.cbl i{display:inline-block;width:11px;height:11px;border:2px solid #4fc3f7;border-radius:3px;vertical-align:-1px;margin-right:3px}
 .cbr{display:flex;align-items:center;gap:6px;padding:5px 2px;border-top:1px solid rgba(255,255,255,.1)}.cbr .nm{flex:1;min-width:0;font-size:13px;line-height:1.25}.cbr .nm b{display:block;font-size:14px}
 .cbr .ss5{display:flex;gap:3px;flex:0 0 auto}.cbr.best{background:rgba(255,213,74,.18);border-radius:8px;box-shadow:inset 0 0 0 2px #ffd54a}.cbr.best .nm small{color:#ffd54a;font-weight:800}
-.cbr.tienes .nm small{color:#9be7a8;font-weight:700}.cbr.f1 .nm small{color:#ffe082}.cbr.f2 .nm small,.cbr.f3 .nm small{color:#ffb74d}.cbr.imposible,.cbr.mejor{opacity:.5}.cbr.imposible .cslot>*,.cbr.mejor .cslot>*{visibility:hidden}.cbr.imposible .cslot,.cbr.mejor .cslot{color:transparent}
-.cbr .nm small{display:block;font-size:12px}
+.cbr.tienes .nm small{color:#9be7a8;font-weight:700}.cbr.f1 .nm small{color:#ffe082}.cbr.f2 .nm small,.cbr.f3 .nm small{color:#ffb74d}.cbr.imposible,.cbr.mejor,.cbr.mesa{opacity:.5}.cbr.mesa .card{filter:grayscale(1)}.cbr.imposible .cslot>*,.cbr.mejor .cslot>*{visibility:hidden}.cbr.imposible .cslot,.cbr.mejor .cslot{color:transparent}
+.cbr .nm small{display:block;font-size:12px}.cbr.hasx{flex-wrap:wrap}.cbx{flex:0 0 100%;font-size:12.5px;line-height:1.35;color:#fff;padding:2px 2px 2px}.cbw{display:block;margin-top:3px;color:#ffd54a;font-weight:700}
 .cbend{border-top:1px solid #eee;margin-top:6px;padding-top:6px;font-size:14px;line-height:1.4}.cbend b{font-size:15px}.cbend ul{margin:4px 0 6px;padding-left:18px}.cbend li{margin:3px 0}
+.asrow{display:flex;gap:6px;width:100%;justify-content:flex-start;margin:2px 0 6px}
+.asl{flex:1 1 0;min-width:0;max-width:64px;background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:3px;color:#cfe9da}
+.asl>span{width:100%;height:84px;border-radius:9px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff}
+.asl .card.m{width:100%;max-width:none;height:84px}.asl em{font-style:normal;font-size:11px;font-weight:700}
+.asl.act>span,.asl.act .card{box-shadow:0 0 0 3px #ffd54a,0 0 12px rgba(255,213,74,.6)}.asl.act>span{font-size:14px;color:#ffd54a;border-color:#ffd54a}.asl.act em{color:#ffd54a}
+.pk{width:100%;background:#fff;border-radius:14px;padding:8px;margin:4px 0 8px;color:#0b3d24}
+.pkh{display:flex;align-items:center;gap:6px;font-size:15px;margin-bottom:6px}.pkh span{flex:1;min-width:0}
+.pkx{border:0;background:#e9eee9;color:#0b3d24;font-weight:700;font-size:14px;padding:8px 11px;border-radius:9px}
+.pkr{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.pkr button{height:46px;border:0;border-radius:9px;background:#eef2ee;color:#0b3d24;font-size:19px;font-weight:800;padding:0}
+.pkr button.on{background:#0b3d24;color:#fff}.pkr button:disabled{opacity:.25}
+.pks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:6px}.pks button{height:58px;border:0;border-radius:10px;background:#eef2ee;color:#111;font-size:28px;line-height:1;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pks button small{font-size:10px;color:#456;font-weight:600}.pks button.red{color:#d0021b}.pks button:disabled{opacity:.25}
+.pkt{font-size:12.5px;color:#456;margin-top:6px;text-align:center}
+.asb{margin:2px 0 4px}.asb button{padding:12px 0;font-size:16px}
+.tag{display:inline-block;padding:2px 9px;border-radius:8px;color:#fff;font-size:15px;font-weight:800}.tag.g{background:#1b7a3a}.tag.y{background:#c98a0b}.tag.rd{background:#b3261e}
+.aspre1{width:100%;font-size:14px;margin-top:6px;color:#e4f3ea}.aspre1 .tag{font-size:13px}
+.res .t.wa{color:#a86b00}
+.asodds{width:100%;margin-top:8px;background:rgba(0,0,0,.25);border-radius:12px;padding:8px 10px;font-size:14px;line-height:1.4}.asodds summary{font-weight:800;font-size:15px}
+.asin{display:flex;gap:8px;margin:8px 0}.asin label{flex:1;min-width:0;font-size:13px;color:#cfe9da;font-weight:700}.asin input{display:block;width:100%;margin-top:3px;font-size:18px;padding:9px;border-radius:9px;border:0}
 </style></head><body>
 
 <!-- MENÚ -->
@@ -83,6 +102,7 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 <button class="tile" onclick="go('cualgana')"><div class="ic">⚔</div><div><b>¿Cuál gana?</b><small>Compara dos manos, con kickers y empates.</small><em id="m-cualgana"></em></div></button>
 <button class="tile" onclick="go('flop')"><div class="ic red">♦</div><div><b>¿Sigo después del flop?</b><small>Tus 2 cartas + 3 de la mesa: ¿seguir o retirarte?</small><em id="m-flop"></em></div></button>
 <button class="tile" onclick="go('sim')"><div class="ic">🃏</div><div><b>Simulador de mano</b><small>Juega manos reales contra 3 jugadores, con consejos.</small><em id="m-sim"></em></div></button>
+<button class="tile" onclick="go('asis')"><div class="ic red">📝</div><div><b>Partida real (asistente)</b><small>Anota tus cartas y la mesa de una partida de verdad: te digo qué tienes y qué te falta.</small><em id="m-asis"></em></div></button>
 <button class="tile" onclick="go('ranking')"><div class="ic">♣</div><div><b>Ranking de manos</b><small>De la mejor a la peor, con ejemplos.</small></div></button>
 <div class="help">Funciona sin internet. Tus marcadores se guardan en este celular.</div>
 </section>
@@ -143,6 +163,7 @@ h1{font-size:22px;margin:6px 0 2px;text-align:center}.sub{font-size:14px;color:#
 </section>
 
 <!-- SIMULADOR -->
+<section class="screen" id="s-asis"><div id="as-root" style="width:100%;display:flex;flex-direction:column;align-items:center"></div></section>
 <section class="screen" id="s-sim"><div id="sim-root" style="width:100%;display:flex;flex-direction:column;align-items:center"></div></section>
 
 <script>
@@ -333,6 +354,20 @@ const SG1=["AA","KK","QQ","JJ","AKs","AKo"],SG2=["1010","99","AQs","AQo","AJs","
 SG3=["88","77","66","55","44","33","22","A10s","A9s","A8s","A7s","A6s","A5s","A4s","A3s","A2s","KJs","K10s","QJs","Q10s","J10s","J9s","109s","98s","87s","76s","65s","AJo","A10o","KQo","KJo","QJo"];
 function startCode(h){const a=14-h[0].v,b=14-h[1].v,hi=Math.min(a,b),lo=Math.max(a,b);return hi==lo?SR[hi]+SR[lo]:SR[hi]+SR[lo]+(h[0].s==h[1].s?"s":"o")}
 function startGroup(h){const c=startCode(h);return SG1.includes(c)?1:SG2.includes(c)?2:SG3.includes(c)?3:4}
+// explicación del grupo inicial (la misma del juego «Manos iniciales»)
+function startExplain(hc){const c=startCode(hc),a={r:14-hc[0].v,s:hc[0].s},b={r:14-hc[1].v,s:hc[1].s},h=Math.min(a.r,b.r),l=Math.max(a.r,b.r),su=a.s==b.s,g=l-h,G1=SG1,G2=SG2,G3=SG3;
+if(h==l){if(h<=3)return"Pareja alta: de las mejores manos. Juégala siempre y sube.";if(h<=5)return"Pareja media: casi siempre vale la pena entrar.";return"Pareja baja: entra solo si es barato (hablas de último o nadie subió) buscando trío. Si no lo ligas, retírate."}
+if(G1.includes(c))return"A-K es la mejor mano sin pareja. Juégala y sube.";
+if(G2.includes(c))return"Dos cartas muy altas: casi siempre vale la pena entrar.";
+if(h==0&&su)return"As con carta del mismo palo: busca color. Juégala desde posición tardía si nadie ha subido.";
+if(h==0&&l<=4)return"As con carta alta de distinto palo: jugable si hablas de último o nadie ha subido.";
+if(h==0)return"As con carta baja de distinto palo: si ligas pareja de ases, otro suele tener mejor acompañante. Bótala.";
+if(G3.includes(c)&&h<=4&&l<=4)return"Dos cartas altas: sirven si nadie ha subido fuerte, sobre todo desde posición tardía.";
+if(G3.includes(c)&&su)return"Consecutivas del mismo palo: buscan escalera o color. Juégalas si hablas de último y nadie ha subido.";
+if(su&&g==1)return"Consecutivas del mismo palo pero muy bajas: poco valor. Mejor bótalas al empezar.";
+if(g==1)return"Consecutivas de distinto palo: pierden mucho valor. Bótalas.";
+if(su)return"Ser del mismo palo no salva cartas sin relación. Bótala.";
+return"Dos cartas sin relación: no es pareja, ni dos altas, ni consecutivas del mismo palo. Bótala."}
 function startName(h){const a=Math.max(h[0].v,h[1].v),b=Math.min(h[0].v,h[1].v);return a==b?"Pareja de "+rl(a):rl(a)+"-"+rl(b)+(h[0].s==h[1].s?" del mismo palo":" de distinto palo")}
 // fuerza después del flop (misma regla que «¿Sigo después del flop?», generalizada a turn y river)
 function postInfo(hole,board){const all=hole.concat(board),e=best5(all).ev,bv=board.map(c=>c.v),maxB=Math.max(...bv),h1=hole[0].v,h2=hole[1].v,r=rl,river=board.length>=5;
@@ -444,8 +479,10 @@ function simCoach(g){const i=g.toAct,p=g.players[i],L=simLegal(g),pot=potTotal(g
       else if(N>=need){rec="seguir";t=f.msg+" Un proyecto liga más o menos 1 de cada 5 veces por carta: a este precio, iguala."}
       else{rec="retirarse";t=f.msg+" Pero la apuesta es cara para un proyecto: retírate."}}
     else{rec=L.canCheck?"pasar":"retirarse";t=f.msg+(L.canCheck?" Pasa gratis; si te apuestan, retírate.":" Retírate.")}}
-  if(L.toCall>0){const N=(pot+L.toCall)/L.toCall;t+=` Cuentas del bote: pagas ${L.toCall} para ganar ${pot}; te conviene si ganas al menos 1 de cada ${N>=10?Math.round(N):Math.round(N*10)/10} veces.`}
+  if(L.toCall>0)t+=" Cuentas del bote: "+potOddsText(pot,L.toCall);
   return{rec,text:t}}
+function potOddsN(pot,call){const N=(pot+call)/call;return N>=10?Math.round(N):Math.round(N*10)/10}
+function potOddsText(pot,call){return`pagas ${call} para ganar ${pot}; te conviene si ganas al menos 1 de cada ${potOddsN(pot,call)} veces.`}
 const RECTXT={subir:"subir",seguir:"seguir en la mano",pasar:"pasar",retirarse:"retirarte"},ACTTXT={fold:"te retiraste",check:"pasaste",call:"igualaste",raise:"subiste"};
 function simReview(g){const A=g.userActs||[];if(!A.length)return"Repaso: no tuviste que decidir nada en esta mano.";
   const okf=a=>a.rec=="retirarse"?a.type=="fold":a.rec=="pasar"?a.type=="check":a.type!="fold",bad=A.filter(a=>!okf(a));
@@ -523,28 +560,54 @@ function cbKick(m,hole,board){const kn=hole.map(c=>({c,own:true})).concat(board.
  for(const k of kn)if(pick.length<m.t.kick&&!cv.has(k.c.v)&&!pick.some(p=>p.c.v==k.c.v))pick.push(k);
  for(const k of kn)if(pick.length<m.t.kick&&!pick.includes(k))pick.push(k);
  const out=pick.map(k=>({c:k.c,own:k.own,kick:true}));while(out.length<m.t.kick)out.push({need:null,kick:true});return out}
-// todas las filas, de Escalera real a Carta alta
+// qué aporta cada una de tus 2 cartas a tu mejor mano (y aviso si la mano es de la mesa)
+const CB_KIND={1:"la pareja",2:"las dos parejas",3:"el trío",4:"la escalera",5:"el color",6:"el full",7:"el póker",8:"la escalera de color",9:"la escalera real"};
+function cbContrib(hole,board,best,coreKeys,E){const bk=new Set(best.map(ckey)),five=best.map(c=>rl(c.v)).join("-"),kind=CB_KIND[E.cat]||"tu mano";
+ const role=c=>coreKeys.has(ckey(c))&&E.cat>0?"core":bk.has(ckey(c))?"kick":"out";
+ const h=hole.slice().sort((a,b)=>b.v-a.v),R=h.map(role),core=h.filter((c,i)=>R[i]=="core"),kick=h.filter((c,i)=>R[i]=="kick"),out=h.filter((c,i)=>R[i]=="out"),parts=[];
+ if(core.length==2)parts.push(`Tus dos cartas (${cstr(h[0])} y ${cstr(h[1])}) forman ${kind}: ${five}.`);
+ else if(core.length==1)parts.push(`Tu ${cstr(core[0])} forma ${kind} con la mesa: ${five}.`);
+ if(kick.length)parts.push((kick.length==2?`Tus ${cstr(kick[0])} y ${cstr(kick[1])} juegan como cartas acompañantes`:`Tu ${cstr(kick[0])} juega como carta acompañante`)+(E.cat==0&&!core.length?"":" (kicker)")+(core.length?"":`: ${five}`)+".");
+ if(out.length==2)parts.push(`Tus cartas no entran en tu mejor mano: juega solo la mesa, ${five}.`);
+ else if(out.length==1)parts.push(`Tu ${cstr(out[0])} no entra en tu mejor mano.`);
+ let warn="";
+ if(E.cat>0&&!core.length){const cr=[...new Set(best.filter(c=>coreKeys.has(ckey(c))).map(c=>c.v))];
+  if(E.cat<=3){const hi=kick.length?kick[0]:null;
+   const ranks=E.cat==2?cr:[...new Set(board.map(c=>c.v))].sort((a,b)=>b-a);
+   warn=`Ojo: cualquier rival con ${cbJoinO(ranks.map(cbUn))}`+(hi&&hi.v==14?"":`, o con una carta más alta que ${hi?"tu "+rl(hi.v):(()=>{const k=best.filter(c=>!coreKeys.has(ckey(c))).map(c=>c.v);return k.length?rl(Math.min(...k)):"las de la mesa"})()},`)+` te gana.`+(hi?"":" Como mucho empatas.")}
+  else warn=`Ojo: como mucho empatas, y cualquiera que la mejore te gana.`}
+ return{contrib:parts.join(" "),warn}}
+function cbBoardName(E){const t=E.tb,r=rl;return{1:"la pareja de "+r(t[0]),2:"la doble pareja de "+r(t[0])+" y "+r(t[1]),3:"el trío de "+r(t[0]),6:"el full de "+r(t[0])+" con "+r(t[1]),7:"el póker de "+r(t[0])}[E.cat]||CB_KIND[E.cat]}
+// todas las filas, de Escalera real a Carta alta.
+// «Tu mejor mano» = la mejor combinación en la que tus cartas forman parte (no solo de acompañante); lo que es solo de la mesa no te sirve.
+// (El ganador real de la mano sigue saliendo del evaluador completo de 7 cartas.)
 function cbAll(hole,board){const left=5-board.length,all=hole.concat(board),hk=new Set(hole.map(ckey)),rows=[];
- let E,bestCards=null,coreKeys=null;
- if(all.length>=5){const b=best5(all);E=b.ev;const u=E.used.map(i=>b.cards[i]);bestCards=u.concat(b.cards.filter((c,i)=>!E.used.includes(i)));coreKeys=new Set(u.map(ckey))}
- else{const pp=hole[0].v==hole[1].v,hv=Math.max(hole[0].v,hole[1].v),lv=Math.min(hole[0].v,hole[1].v);E={cat:pp?1:0,tb:pp?[hv]:[hv,lv]};E.name=CATS[E.cat]}
+ let E,bestCards=null,coreKeys=null,own=true,HE;
+ const pp=hole[0].v==hole[1].v,hv=Math.max(hole[0].v,hole[1].v),lv=Math.min(hole[0].v,hole[1].v),HO={cat:pp?1:0,tb:pp?[hv]:[hv,lv]};HO.name=CATS[HO.cat];
+ if(all.length>=5){const b=best5(all);E=b.ev;let u=E.used.map(i=>b.cards[i]);if(![4,8,9].includes(E.cat)){const n={};u.forEach(c=>n[c.v]=(n[c.v]||0)+1);u=u.slice().sort((x,y)=>n[y.v]-n[x.v]||y.v-x.v)}bestCards=u.concat(b.cards.filter((c,i)=>!E.used.includes(i)).sort((x,y)=>y.v-x.v));coreKeys=new Set(u.map(ckey));
+  own=E.cat>0&&u.some(c=>hk.has(ckey(c)))}
+ else E=HO;
+ HE=own?E:HO;
  for(const cat of [9,8,7,6,5,4,3,2,1,0]){const {made,draw}=cbBest(cat,hole,board),row={cat,name:CATS[cat],left};
-  if(cat==E.cat){row.st="best";row.label=bestCards?describe(E):(E.cat?"Pareja de "+rl(E.tb[0]):"Carta alta "+rl(E.tb[0]));
-   if(bestCards){row.slots=bestCards.map(c=>({c,own:hk.has(ckey(c))}));row.mesa=E.cat>0&&![...coreKeys].some(k=>hk.has(k))}
-   else{row.slots=hole.slice().sort((a,b)=>b.v-a.v).map(c=>({c,own:true}));while(row.slots.length<5)row.slots.push({need:null,kick:true});row.mesa=false}}
-  else if(made&&cat>0&&cat<E.cat){row.st="tienes";row.label=cbLabel(cat,made);row.slots=made.slots.concat(cbKick(made,hole,board));row.mesa=made.hole==0}
-  else if(cat<E.cat){row.st="mejor";const m=draw||made;row.slots=m?m.slots.slice():[]}
+  if(cat==HE.cat){row.st="best";row.mesa=false;
+   if(own&&bestCards){row.label=describe(E);row.slots=bestCards.map(c=>({c,own:hk.has(ckey(c))}));row.contrib=cbContrib(hole,board,bestCards,coreKeys,E).contrib}
+   else{row.label=HE.cat?"Pareja de "+rl(HE.tb[0]):"Carta alta "+rl(HE.tb[0]);row.slots=hole.slice().sort((a,b)=>b.v-a.v).map(c=>({c,own:true}));if(HE.cat==1)row.contrib="Tus dos cartas forman la pareja.";
+    if(bestCards&&E.cat>HE.cat){row.board=cbBoardName(E);row.note="Tu mano real es "+row.label+"; "+row.board+" es de todos, no te sirve.";row.warn=cbContrib(hole,board,bestCards,coreKeys,E).warn;row.contrib=row.note}}}
+  else if(made&&cat>0&&(made.hole==0||cat>HE.cat)){row.st="mesa";row.label=cbLabel(cat,made);row.slots=made.slots.slice()}
+  else if(made&&cat>0&&cat<HE.cat){row.st="tienes";row.label=cbLabel(cat,made);row.slots=made.slots.concat(cbKick(made,hole,board));row.mesa=false}
+  else if(cat<HE.cat){row.st="mejor";const m=draw||made;row.slots=m?m.slots.slice():[]}
   else if(!draw||draw.miss>left){row.st="imposible";row.slots=draw?draw.slots.slice():[]}
   else{row.slots=draw.slots.concat(cbKick(draw,hole,board));row.miss=draw.miss;row.label=cbLabel(cat,draw);
    if(draw.miss==1){row.st="f1";row.outs=cbOuts(cat,hole,board);row.need=cbOutsText(row.outs,hole,board);
     if(!row.outs.length){row.st="imposible"}}
    else{row.st=draw.miss==2?"f2":"f3";row.need=cbNeedText(draw)}}
   while(row.slots.length<5)row.slots.push({need:null,kick:true});rows.push(row)}
- return{rows,best:E,left,street:board.length==0?0:board.length-2}}
+ return{rows,best:HE,evalBest:E,own,left,street:board.length==0?0:board.length-2}}
 const CB_STREET=["Antes del flop","Flop","Turn","River"];
 function cbSummary(r){const b=r.rows.find(x=>x.st=="best"),f1=r.rows.filter(x=>x.st=="f1");
- let s=CB_STREET[r.street]+": tienes "+b.label+(b.mesa?" (de la mesa, es de todos)":"")+".";
- if(r.left==0)return CB_STREET[r.street]+": tu mano final es "+b.label+(b.mesa?" (de la mesa, es de todos)":"")+".";
+ let s=b.note?CB_STREET[r.street]+": t"+b.note.slice(1)+(b.warn?" "+b.warn:"")
+  :CB_STREET[r.street]+": "+(r.left==0?"tu mano final es ":"tienes ")+b.label+"."+(b.contrib?" "+b.contrib:"");
+ if(r.left==0)return s;
  if(f1.length)s+=" Te falta 1 carta para "+f1.slice(0,2).map(x=>x.name+" ("+x.need+", "+x.outs.length+" carta"+(x.outs.length==1?"":"s")+")").join(" y para ")+".";
  else if(r.street>0)s+=" No te falta 1 sola carta para nada mejor.";
  else{const f=r.rows.find(x=>x.st=="f2"&&x.cat>=4);s+=f?" Si salen "+f.need+", tendrías "+f.name+".":" Faltan 5 cartas por salir."}
@@ -554,12 +617,72 @@ function cbHand(hole,board){const fin=cbAll(hole,board),made=fin.rows.filter(x=>
  if(board.length>=3){const fl=cbAll(hole,board.slice(0,3));fl.rows.forEach(x=>{if((x.st=="f1"||(x.st=="f2"&&(x.cat==4||x.cat==5)))&&x.cat>fl.best.cat){const f=fin.rows.find(y=>y.cat==x.cat);
    draws.push({cat:x.cat,name:x.name,miss:x.miss,need:x.need,outs:x.outs?x.outs.length:0,hit:f.st=="best"||f.st=="tienes",done:board.length==5})}})}
  return{fin,made,draws}}
+function cardV(c,sz,cls){const red=c.s==1||c.s==2;return`<div class="card ${sz||""} ${cls||""}${red?" red":""}"><div class="r${red?" red":""}">${rl(c.v)}</div><div class="s${red?" red":""}">${SUITC[c.s]}</div></div>`}
+// tabla «Mis combinaciones»: un solo componente para el simulador y el asistente de partida real
+function cbRowHTML(x,left){const n=x.outs?x.outs.length:0,mesa=x.mesa?" · de la mesa, es de todos":"";
+  const txt={best:"✅ Tu mejor mano: "+x.label+mesa,tienes:"✅ La tienes: "+x.label+mesa,f1:"🟡 Te falta 1: "+x.need+": "+n+" carta"+(n==1?"":"s"),f2:"🟠 Te faltan 2: "+x.need,f3:"⚪ Te faltan "+x.miss+": "+x.need,
+   imposible:left==0?"⚪ No la tienes":"⚪ Ya no es posible",mejor:"Ya tienes algo mejor",mesa:"⚪ De la mesa, no te sirve (todos la tienen)"}[x.st];
+  const plain=x.st=="imposible",sl=plain?'<div class="cslot"></div>'.repeat(5):x.slots.map(o=>o.c?cardV(o.c,"mn",o.own?"own":""):`<div class="cslot">${o.need?(o.need.v?rl(o.need.v):"")+(o.need.s>=0?`<span class="${o.need.s==1||o.need.s==2?"red":""}">${SUITC[o.need.s]}</span>`:""):""}</div>`).join("");
+  const ex=x.st=="best"&&(x.contrib||x.warn)?`<div class="cbx">${x.contrib?"👉 "+x.contrib:""}${x.warn?`<span class="cbw">⚠️ ${x.warn}</span>`:""}</div>`:"";
+  return`<div class="cbr ${x.st}${ex?" hasx":""}"><div class="nm"><b>${x.name}</b><small>${txt}</small></div><div class="ss5">${sl}</div>${ex}</div>`}
+function cbTableHTML(CB){return`<div class="cbl"><b>${CB_STREET[CB.street]}</b> · <i></i>tus cartas · hueco punteado = lo que te falta${CB.left?" · faltan "+CB.left+" carta"+(CB.left==1?"":"s")+" por salir":""}</div>`+CB.rows.map(x=>cbRowHTML(x,CB.left)).join("")}
+function cbView(hole,board){const CB=cbAll(hole,board);return{CB,sum:cbSummary(CB),table:cbTableHTML(CB)}}
+function simCbView(g){const me=g.players[0];return me.hole.length==2?cbView(me.hole,g.board):null}
 /*SIM-END*/
+/*ASIS-START*/
+// ---- Partida real (asistente): lógica pura (sin DOM), probada en tests/asis.test.js ----
+// huecos: 0-1 tus cartas, 2-4 flop, 5 turn, 6 river
+const AS_SLOT=["Tu carta 1","Tu carta 2","Flop 1","Flop 2","Flop 3","Turn","River"];
+function asNew(){return{c:[null,null,null,null,null,null,null],act:0,pot:"",call:"",hist:[]}}
+function asUsed(s,except){const k=new Set();s.c.forEach((c,i)=>{if(c&&i!==except)k.add(ckey(c))});return k}
+function asCanPick(s,c,slot){return!asUsed(s,slot).has(ckey(c))}
+function asRankFree(s,v,slot){const u=asUsed(s,slot);return[0,1,2,3].some(su=>!u.has(v+"-"+su))}
+function asFirstEmpty(s){return s.c.findIndex(x=>!x)}
+function asPush(s){s.hist.push(s.c.map(c=>c&&{v:c.v,s:c.s}));if(s.hist.length>40)s.hist.shift()}
+function asSet(s,slot,c){if(!(slot>=0&&slot<7)||!c||!(c.v>=2&&c.v<=14)||!(c.s>=0&&c.s<4)||!asCanPick(s,c,slot))return false;
+  const o=s.c[slot];if(!(o&&o.v==c.v&&o.s==c.s)){asPush(s);s.c[slot]={v:c.v,s:c.s}}s.act=asFirstEmpty(s);return true}
+function asClear(s,slot){if(!s.c[slot])return false;asPush(s);s.c[slot]=null;s.act=slot;return true}
+function asUndo(s){if(!s.hist.length)return false;s.c=s.hist.pop();s.act=asFirstEmpty(s);return true}
+function asNewHand(s){if(s.c.some(Boolean))asPush(s);s.c=asNew().c;s.act=0;s.pot="";s.call=""}
+function asCards(s){const hole=s.c.slice(0,2).every(Boolean)?s.c.slice(0,2):[],fl=s.c.slice(2,5);let board=[];
+  if(fl.every(Boolean)){board=fl.slice();if(s.c[5]){board.push(s.c[5]);if(s.c[6])board.push(s.c[6])}}
+  return{hole,board,partialFlop:fl.some(Boolean)&&!fl.every(Boolean),riverNoTurn:!!s.c[6]&&!s.c[5]}}
+const AS_GRP={1:"Jugar",2:"Jugar",3:"Depende",4:"Botar"};
+function asPre(hole){const g=startGroup(hole),tip=g<=2?"Sube la apuesta. Si alguien ya subió, iguala o vuelve a subir.":g==3?"Entra solo si nadie ha subido o si hablas de último. Si alguien sube fuerte, retírate.":"Retírate. Si eres la ciega grande y nadie subió, puedes pasar gratis.";
+  return{grp:g,label:AS_GRP[g],name:startName(hole),code:startCode(hole),reason:startExplain(hole),tip}}
+// recomendación por calle: flop = misma regla y explicación que «¿Sigo después del flop?»; turn y river = regla del simulador
+function asAdvice(hole,board,CB){const n=board.length;
+  if(n==3){const inf=flopInfo(hole,board),w=flopWhy(hole,board);
+    return{street:1,verdict:inf.seguir?"seguir":"retirarse",title:inf.seguir?"Sigue en la mano":"Retírate",msg:inf.msg,outs:w.outs,whyHTML:flopWhyHTML(w),made:["hecha","trio","dosp","top","over"].includes(inf.caso)}}
+  const f=postInfo(hole,board),river=n>=5,best=CB.rows.find(x=>x.st=="best");
+  const useful=river?[]:CB.rows.filter(x=>x.st=="f1"&&x.cat>=4&&x.cat>best.cat),k=new Set();useful.forEach(x=>x.outs.forEach(c=>k.add(ckey(c))));const outs=k.size;
+  const L=[["Lo que tienes ahora",f.msg+(best?" (tu mejor combinación: "+best.label+(best.mesa?", de la mesa":"")+")":"")]];
+  if(!river){if(outs){L.push(["Cartas que te sirven",useful.map(x=>x.name+" ("+x.need+")").join(" o ")+": <b>"+outs+"</b> carta"+(outs==1?"":"s")+"."]);
+      L.push(["Probabilidad","Ya solo queda <b>1 carta</b> por salir (el river). Regla fácil: multiplica por 2 → "+outs+" × 2 ≈ <b>"+Math.min(outs*2,100)+" de cada 100</b> veces. En el flop eran 2 cartas (×4); ahora la mitad."+(outs>=8?" Más o menos 1 de cada 5: sigue solo si pagar es barato.":" Es poco: casi siempre fallas.")])}
+    else L.push(["Cartas que te sirven","No te falta 1 sola carta para escalera, color o algo mejor."])}
+  else L.push(["River","Ya no salen más cartas: solo cuenta lo que tienes."]);
+  let verdict,title,concl;
+  if(f.lvl>=2){verdict="seguir";title="Sigue en la mano";concl="Por eso: sigue (apuesta o iguala)."}
+  else if(f.lvl==1){verdict="barato";title="Sigue solo si es barato";concl="Por eso: sigue solo si la apuesta es pequeña (mira «Cuentas del bote»). Si nadie apuesta, pasa gratis."}
+  else{verdict="retirarse";title=river?"No apuestes":"Retírate";concl=river?"Por eso: no apuestes; si te apuestan, retírate.":"Por eso: retírate. Si nadie apuesta, pasa gratis."}
+  const regla=river?"Regla del river: apuesta o paga con pareja alta o algo mejor que use tus cartas; con menos, retírate si te apuestan.":"Regla del turn: sigue con pareja alta o algo mejor usando tus cartas. Con un proyecto (te falta 1 carta) sigue solo si pagar es barato.";
+  return{street:river?3:2,verdict,title,msg:f.msg,outs,made:f.lvl>=2,whyHTML:flopWhyHTML({lines:L,regla,seguir:verdict!="retirarse",concl})}}
+function asNum(x){const n=Math.round(+String(x==null?"":x).replace(",","."));return isFinite(n)&&n>0?n:0}
+// cuentas del bote en palabras (misma frase que el simulador)
+function asOdds(pot,call,adv){pot=asNum(pot);call=asNum(call);if(!call)return pot?"Si nadie te apuesta, no pagas nada: puedes pasar gratis.":"";
+  let t="Cuentas del bote: "+potOddsText(pot,call),need=Math.round(100/((pot+call)/call));t+=" O sea, necesitas ganar unas "+need+" de cada 100 veces.";
+  if(!adv)return t;
+  if(adv.made)t+=" Con tu mano hecha, normalmente sí conviene pagar.";
+  else if(adv.outs>0&&adv.street<3){const ch=Math.min(adv.outs*(adv.street==1?4:2),100);t+=` Con ${adv.outs} cartas que te sirven ligas ≈ ${ch} de cada 100 → ${ch>=need?"✅ conviene pagar.":"❌ no conviene pagar: es muy caro para tu proyecto."}`}
+  else t+=adv.street==3?" Sin pareja alta ni algo mejor, no conviene pagar.":" Sin mano ni proyecto, no conviene pagar aunque sea barato.";
+  return t}
+function asView(s){const{hole,board,partialFlop,riverNoTurn}=asCards(s),v={hole,board,partialFlop,riverNoTurn};if(hole.length<2)return v;
+  v.pre=asPre(hole);v.cb=cbView(hole,board);if(board.length>=3)v.adv=asAdvice(hole,board,v.cb.CB);v.odds=asOdds(s.pot,s.call,v.adv);return v}
+/*ASIS-END*/
 
 
 // ---------- utilidades de interfaz ----------
 const $=id=>document.getElementById(id);
-function cardV(c,sz,cls){const red=c.s==1||c.s==2;return`<div class="card ${sz||""} ${cls||""}${red?" red":""}"><div class="r${red?" red":""}">${rl(c.v)}</div><div class="s${red?" red":""}">${SUITC[c.s]}</div></div>`}
 function rowHTML(cs,sz,hi){return cs.map((c,i)=>cardV(c,sz,hi?(hi.includes(i)?"hi":"dim"):"")).join("")}
 function Stats(key,pre){this.key=key;this.pre=pre;this.st=JSON.parse(localStorage.getItem(key)||'{"ok":0,"tot":0,"rac":0,"mej":0}')}
 Stats.prototype.html=function(){const p=this.pre;$(p+"-sc").innerHTML=`<div><b id="${p}-a">0/0</b><span>Aciertos</span></div><div><b id="${p}-p">0%</b><span>Precisión</span></div><div><b id="${p}-r">0</b><span>Racha</span></div><div><b id="${p}-m">0</b><span>Mejor racha</span></div>`;this.show()};
@@ -576,19 +699,7 @@ const L={jugar:"Jugar",depende:"Depende",botar:"Botar"};
 let st=JSON.parse(localStorage.getItem("pk")||'{"ok":0,"tot":0,"rac":0,"mej":0}'),a,b,el=null;
 function code(){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r);if(h==l)return R[h]+R[l];return R[h]+R[l]+(a.s==b.s?"s":"o")}
 function correct(c){return G1.includes(c)||G2.includes(c)?"jugar":G3.includes(c)?"depende":"botar"}
-function explain(c){const h=Math.min(a.r,b.r),l=Math.max(a.r,b.r),su=a.s==b.s,g=l-h;
-if(h==l){if(h<=3)return"Pareja alta: de las mejores manos. Juégala siempre y sube.";if(h<=5)return"Pareja media: casi siempre vale la pena entrar.";return"Pareja baja: entra solo si es barato (hablas de último o nadie subió) buscando trío. Si no lo ligas, retírate."}
-if(G1.includes(c))return"A-K es la mejor mano sin pareja. Juégala y sube.";
-if(G2.includes(c))return"Dos cartas muy altas: casi siempre vale la pena entrar.";
-if(h==0&&su)return"As con carta del mismo palo: busca color. Juégala desde posición tardía si nadie ha subido.";
-if(h==0&&l<=4)return"As con carta alta de distinto palo: jugable si hablas de último o nadie ha subido.";
-if(h==0)return"As con carta baja de distinto palo: si ligas pareja de ases, otro suele tener mejor acompañante. Bótala.";
-if(G3.includes(c)&&h<=4&&l<=4)return"Dos cartas altas: sirven si nadie ha subido fuerte, sobre todo desde posición tardía.";
-if(G3.includes(c)&&su)return"Consecutivas del mismo palo: buscan escalera o color. Juégalas si hablas de último y nadie ha subido.";
-if(su&&g==1)return"Consecutivas del mismo palo pero muy bajas: poco valor. Mejor bótalas al empezar.";
-if(g==1)return"Consecutivas de distinto palo: pierden mucho valor. Bótalas.";
-if(su)return"Ser del mismo palo no salva cartas sin relación. Bótala.";
-return"Dos cartas sin relación: no es pareja, ni dos altas, ni consecutivas del mismo palo. Bótala."}
+function explain(c){return startExplain([{v:14-a.r,s:a.s},{v:14-b.r,s:b.s}])}
 function card(k){const red=k.s==1||k.s==2;return`<div class="card${red?" red":""}"><div class="r${red?" red":""}">${R[k.r]}</div><div class="s${red?" red":""}">${S[k.s]}</div></div>`}
 function score(){document.getElementById("sa").textContent=st.ok+"/"+st.tot;document.getElementById("sp").textContent=(st.tot?Math.round(st.ok/st.tot*100):0)+"%";document.getElementById("sr").textContent=st.rac;document.getElementById("sm").textContent=st.mej;localStorage.setItem("pk",JSON.stringify(st))}
 function nuevo(){a={r:rnd(13),s:rnd(4)};do{b={r:rnd(13),s:rnd(4)}}while(b.r==a.r&&b.s==a.s);el=null;
@@ -677,7 +788,7 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
   h+=`</div></div><div class="log" id="sim-log">${g.log.slice(-3).map((l,k,a)=>k==a.length-1?"<b>"+l+"</b>":l).join("<br>")}</div>`;
   const bd=(0==g.dealer?'<i class="bd d">D</i>':"")+(0==g.sb?'<i class="bd">CP</i>':"")+(0==g.bb?'<i class="bd">CG</i>':"");
   const myst=sd&&!me.folded?describe(g.sd[0].ev):me.folded?"Te retiraste":me.allin?"All-in":myTurn?"Te toca":g.over?"":"Esperando a "+P[g.toAct].name+"…";
-  const CB=me.hole.length==2?cbAll(me.hole,g.board):null,cbs=CB?`<div class="cbsum" onclick="SIM.cbGo()">📋 ${me.folded&&!g.over?"(Te retiraste) ":""}${cbSummary(CB)} <u>${this.cbOpen?"Ver tabla ↓":"Abrir tabla"}</u></div>`:"";
+  const CB=simCbView(g),cbs=CB?`<div class="cbsum" onclick="SIM.cbGo()">📋 ${me.folded&&!g.over?"(Te retiraste) ":""}${CB.sum} <u>${this.cbOpen?"Ver tabla ↓":"Abrir tabla"}</u></div>`:"";
   h+=`<div class="me${myTurn?" turn":""}${g.over&&g.result.winners.includes(0)?" win":""}"><div class="top"><b>Tú${bd}</b><span>${me.stack} fichas${me.bet?" · apuesta "+me.bet:""}</span></div>
    <div class="mrow"><div class="row5 mine">${me.hole.map(c=>cardV(c,"l",hk.size?(hk.has(ckey(c))?"hi":""):"")).join("")}</div>${cbs}</div><div class="st">${myst}</div></div>`;
   if(myTurn&&this.coach)h+=`<div class="hint">💡 ${simCoach(g).text}</div>`;
@@ -701,18 +812,13 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
  cbOpen:localStorage.getItem("pk5cb")!=="0",
  toggleCb(){this.cbOpen=!this.cbOpen;localStorage.setItem("pk5cb",this.cbOpen?"1":"0");this.render();if(this.cbOpen)this.cbGo()},
  cbGo(){if(!this.cbOpen){this.toggleCb();return}const e=$("sim-cb");if(e)e.scrollIntoView({behavior:"smooth",block:"start"})},
- cbRow(x,left){const n=x.outs?x.outs.length:0,mesa=x.mesa?" · de la mesa, es de todos":"";
-  const txt={best:"✅ Tu mejor mano: "+x.label+mesa,tienes:"✅ La tienes: "+x.label+mesa,f1:"🟡 Te falta 1: "+x.need+": "+n+" carta"+(n==1?"":"s"),f2:"🟠 Te faltan 2: "+x.need,f3:"⚪ Te faltan "+x.miss+": "+x.need,
-   imposible:left==0?"⚪ No la tienes":"⚪ Ya no es posible",mejor:"Ya tienes algo mejor"}[x.st];
-  const sl=x.slots.map(o=>o.c?cardV(o.c,"mn",o.own?"own":""):`<div class="cslot">${o.need?(o.need.v?rl(o.need.v):"")+(o.need.s>=0?`<span class="${o.need.s==1||o.need.s==2?"red":""}">${SUITC[o.need.s]}</span>`:""):""}</div>`).join("");
-  return`<div class="cbr ${x.st}"><div class="nm"><b>${x.name}</b><small>${txt}</small></div><div class="ss5">${sl}</div></div>`},
  cbPanel(CB){return`<div class="cbp" id="sim-cb"><button class="cbh" onclick="SIM.toggleCb()">📋 Mis combinaciones<span>${this.cbOpen?"Ocultar ▲":"Ver ▼"}</span></button>`+
-  (this.cbOpen?`<div class="cbl"><b>${CB_STREET[CB.street]}</b> · <i></i>tus cartas · hueco punteado = lo que te falta${CB.left?" · faltan "+CB.left+" carta"+(CB.left==1?"":"s")+" por salir":""}</div>`+CB.rows.map(x=>this.cbRow(x,CB.left)).join(""):"")+`</div>`},
+  (this.cbOpen?CB.table:"")+`</div>`},
  cbEnd(){const g=this.g,P=g.players,me=P[0],R=g.result,H=cbHand(me.hole,g.board),b=H.made[0],others=H.made.slice(1),sd=R.type=="showdown",ws=R.winners;
   let res;if(me.folded)res="te retiraste antes de verla";else if(!sd)res=ws.includes(0)?"🏆 ganaste porque todos se retiraron":"";
   else if(ws.includes(0))res=ws.length>1?"🤝 empataste":"🏆 con esta ganaste";
   else{const w=ws[0];res="❌ perdió contra "+describe(g.sd[w].ev)+" de "+P[w].name}
-  let li=`<li>Tu mejor: <b>${b.label}</b>${b.mesa?" (de la mesa, es de todos)":""}${res?" → "+res:""}.</li>`;
+  let li=`<li>Tu mejor: <b>${b.label}</b>${b.note?" ("+b.board+" es de la mesa, no te sirve)":""}${res?" → "+res:""}.</li>`;
   if(others.length)li+=`<li>También tenías: ${others.map(x=>x.label+(x.mesa?" (de la mesa)":"")).join(", ")}${sd&&!ws.includes(0)&&!me.folded?". Valen menos, así que tampoco alcanzaban":""}.</li>`;
   const cartas=n=>n+" carta"+(n==1?"":"s");
   H.draws.filter(d=>d.hit||d.cat>b.cat).forEach(d=>{li+=`<li>En el flop te faltaba${d.miss==1?" 1":"n 2"} para <b>${d.name}</b> (${d.need}${d.miss==1?", "+cartas(d.outs):""}): ${d.hit?"✅ ¡salió!":d.done?"no salió.":"la mano terminó antes del river."}</li>`});
@@ -722,14 +828,59 @@ const SIM={key:"pk5",delay:650,amt:0,showAll:false,g:null,t:0,demo:null,
  demoUser(){const g=this.g,d=this.demo;const L=simLegal(g);if(d=="start"||(d=="flop"&&g.street>=1)||(d=="bet"&&g.street>=1&&L.toCall>0))return;setTimeout(()=>this.user(L.canCheck?"check":"call"),this.delay)},
  demoEnd(){if(this.demo=="showdown"&&this.g.result.type=="showdown"){if(this.demoAll)this.toggleAll();setTimeout(()=>$("sim-res").scrollIntoView(),50);return}setTimeout(()=>this.next(),this.delay)}};
 
+// ---------- PARTIDA REAL (ASISTENTE) ----------
+const AS={key:"pk6",s:null,rank:null,whyOpen:false,
+ load(){let d=null;try{d=JSON.parse(localStorage.getItem(this.key)||"null")}catch(e){}
+  this.s=asNew();if(d&&Array.isArray(d.c)&&d.c.length==7){this.s.c=d.c.map(c=>c&&c.v>=2&&c.v<=14&&c.s>=0&&c.s<4?{v:c.v,s:c.s}:null);this.s.pot=d.pot||"";this.s.call=d.call||"";this.s.hist=Array.isArray(d.hist)?d.hist:[];this.s.act=d.act==null?asFirstEmpty(this.s):d.act}},
+ save(){localStorage.setItem(this.key,JSON.stringify(this.s))},
+ enter(){if(!this.s)this.load();this.render()},
+ tap(i){this.s.act=this.s.act===i?-1:i;this.rank=null;this.save();this.render()},
+ close(){this.s.act=-1;this.rank=null;this.save();this.render()},
+ pickRank(v){this.rank=this.rank===v?null:v;this.render()},
+ pickSuit(su){if(this.rank==null||this.s.act<0)return;if(asSet(this.s,this.s.act,{v:this.rank,s:su})){this.rank=null;this.whyOpen=false;this.save();this.render()}},
+ clear(){if(asClear(this.s,this.s.act)){this.rank=null;this.whyOpen=false;this.save();this.render()}},
+ undo(){if(asUndo(this.s)){this.rank=null;this.whyOpen=false;this.save();this.render()}},
+ newHand(){asNewHand(this.s);this.rank=null;this.whyOpen=false;this.save();this.render();window.scrollTo(0,0)},
+ why(){this.whyOpen=!this.whyOpen;this.render()},
+ num(k,el){this.s[k]=el.value;this.save();const v=asView(this.s),o=$("as-oddt");if(o)o.innerHTML=v.odds||"Escribe cuánto hay en el bote y cuánto te toca pagar."},
+ slot(i,cap){const c=this.s.c[i],a=this.s.act===i;
+  return`<button class="asl${a?" act":""}${c?" full":""}" onclick="AS.tap(${i})">${c?cardV(c,"m"):`<span>${a?"Elige ↓":"+"}</span>`}<em>${cap}</em></button>`},
+ picker(){const s=this.s,i=s.act;if(i<0)return"";const R=[14,13,12,11,10,9,8,7,6,5,4,3,2],u=asUsed(s,i);
+  let h=`<div class="pk"><div class="pkh"><span>Elige: <b>${AS_SLOT[i]}</b>${this.rank?" · "+rl(this.rank)+" de…":""}</span>${s.c[i]?`<button class="pkx" onclick="AS.clear()">Quitar</button>`:""}<button class="pkx" onclick="AS.close()">✕</button></div>`;
+  h+=`<div class="pkr">${R.map(v=>`<button class="${this.rank===v?"on":""}" ${asRankFree(s,v,i)?"":"disabled"} onclick="AS.pickRank(${v})">${rl(v)}</button>`).join("")}</div>`;
+  h+=`<div class="pks">${[0,1,2,3].map(su=>{const ok=this.rank!=null&&!u.has(this.rank+"-"+su);return`<button class="${su==1||su==2?"red":""}" ${ok?"":"disabled"} onclick="AS.pickSuit(${su})">${SUITC[su]}<small>${SUITN[su]}</small></button>`}).join("")}</div>`;
+  if(this.rank==null)h+=`<div class="pkt">1) Toca el número · 2) toca el palo. Las cartas ya puestas no se pueden repetir.</div>`;
+  return h+`</div>`},
+ render(){const s=this.s,v=asView(s);let h=`<div class="simtop"><button class="back" onclick="go('menu')">← Menú</button><b>Partida real</b><span></span></div>`;
+  h+=`<div class="sub" style="margin-bottom:6px">Anota tus cartas y las de la mesa a medida que salen.</div>`;
+  h+=`<div class="lbl">Tus cartas</div><div class="asrow">${this.slot(0,"Tuya")}${this.slot(1,"Tuya")}</div>`;
+  h+=`<div class="lbl">Mesa</div><div class="asrow">${this.slot(2,"Flop")}${this.slot(3,"Flop")}${this.slot(4,"Flop")}${this.slot(5,"Turn")}${this.slot(6,"River")}</div>`;
+  h+=this.picker();
+  h+=`<div class="btns asb"><button class="bl" ${s.hist.length?"":"disabled"} onclick="AS.undo()">↩ Deshacer</button><button class="rd" onclick="AS.newHand()">Nueva mano</button></div>`;
+  if(v.hole.length<2){h+=`<div class="help">Toca un hueco y elige la carta: primero el número y después el palo. Con tus 2 cartas te digo si conviene jugar; con el flop, qué tienes y qué te falta. Todo se guarda aunque cierres la app.</div>`;$("as-root").innerHTML=h;return}
+  const p=v.pre,cls={Jugar:"g",Depende:"y",Botar:"rd"}[p.label];
+  if(!v.board.length)h+=`<div class="res aspre"><div class="t">Antes del flop: <span class="tag ${cls}">${p.label}</span></div><p><b>${p.name}.</b> ${p.reason}</p><p class="rv">👉 ${p.tip}</p></div>`;
+  else h+=`<div class="aspre1">Antes del flop: ${p.name} → <span class="tag ${cls}">${p.label}</span></div>`;
+  if(v.partialFlop)h+=`<div class="hint">Completa las 3 cartas del flop para ver qué tienes y qué te falta.</div>`;
+  if(v.riverNoTurn)h+=`<div class="hint">Pusiste el river pero falta el turn: anota el turn para seguir.</div>`;
+  h+=`<div class="cbsum">📋 ${v.cb.sum}</div>`;
+  if(v.adv){const a=v.adv,c=a.verdict=="seguir"?"ok":a.verdict=="barato"?"wa":"no";
+   h+=`<div class="res"><div class="t ${c}">${["","Flop","Turn","River"][a.street]}: ${a.title}</div><p>${a.msg}</p><button class="whyb" onclick="AS.why()">${this.whyOpen?"Ocultar explicación":"¿Por qué?"}</button><div class="why" style="display:${this.whyOpen?"block":"none"}">${a.whyHTML}</div></div>`}
+  h+=`<details class="asodds"${s.pot||s.call?" open":""}><summary>💰 Cuentas del bote (opcional)</summary><div class="asin"><label>Bote<input type="number" inputmode="numeric" min="0" value="${s.pot}" oninput="AS.num('pot',this)"></label><label>Tengo que pagar<input type="number" inputmode="numeric" min="0" value="${s.call}" oninput="AS.num('call',this)"></label></div><div id="as-oddt">${v.odds||"Escribe cuánto hay en el bote y cuánto te toca pagar."}</div></details>`;
+  h+=`<div class="cbp"><div class="cbh">📋 Mis combinaciones</div>${v.cb.table}</div>`;
+  $("as-root").innerHTML=h},
+ menuText(){const d=JSON.parse(localStorage.getItem(this.key)||"null");const n=d&&Array.isArray(d.c)?d.c.filter(Boolean).length:0;return n?`Mano en curso: ${n} carta${n==1?"":"s"} anotada${n==1?"":"s"}`:""}};
+
 // ---------- navegación ----------
 function menuScores(){[["manos","pk"],["quemano","pk2"],["cualgana","pk3"],["flop","pk4"]].forEach(([k,ls])=>{const s=JSON.parse(localStorage.getItem(ls)||"null");$("m-"+k).textContent=s&&s.tot?`Aciertos ${s.ok}/${s.tot} · mejor racha ${s.mej}`:""});
- const sm=JSON.parse(localStorage.getItem("pk5")||"null");$("m-sim").textContent=sm&&sm.h?`Manos jugadas ${sm.h} · tus fichas ${sm.st[0]}`:""}
-function go(n,noHist){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id=="s-"+n));if(n=="menu")menuScores();window.scrollTo(0,0);if(n=="sim")SIM.enter();
+ const sm=JSON.parse(localStorage.getItem("pk5")||"null");$("m-sim").textContent=sm&&sm.h?`Manos jugadas ${sm.h} · tus fichas ${sm.st[0]}`:"";$("m-asis").textContent=AS.menuText()}
+function go(n,noHist){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id=="s-"+n));if(n=="menu")menuScores();window.scrollTo(0,0);if(n=="sim")SIM.enter();if(n=="asis")AS.enter();
  if(!noHist)history.replaceState(null,"",n=="menu"?location.pathname:"#"+n)}
 score();nuevo();Q.s.html();Q.nuevo();W.s.html();W.nuevo();F.s.html();F.nuevo();
 const P=new URLSearchParams(location.search),start=P.get("screen")||location.hash.slice(1)||"menu";go($("s-"+start)?start:"menu",true);
 if(start=="sim"&&P.get("demo")){SIM.demo=P.get("demo");SIM.rig=P.get("rig");if(SIM.rig){SIM.g=simNew();SIM.g.over=true;SIM.g.result=null}SIM.demoAll=!!P.get("all");SIM.delay=+(P.get("delay")||40);SIM.enter()}
+else if(start=="asis"&&P.get("as")!=null){const t=P.get("as").match(/(10|[2-9TJQKA])[shdc]|_/g)||[],s=asNew();t.slice(0,7).forEach((x,i)=>{if(x!="_")asSet(s,i,{v:{A:14,K:13,Q:12,J:11,T:10}[x.slice(0,-1)]||+x.slice(0,-1),s:"shdc".indexOf(x.slice(-1))})});
+  s.act=P.get("act")!=null?+P.get("act"):asFirstEmpty(s);s.pot=P.get("pot")||"";s.call=P.get("call")||"";AS.s=s;AS.rank=P.get("rank")?+P.get("rank"):null;AS.whyOpen=!!P.get("why");AS.render()}
 else if(P.get("demo")){({manos:()=>pick(correct(code())),quemano:()=>Q.pick(Q.e.cat),cualgana:()=>W.pick("A"),flop:()=>{if(P.get("fh"))F.set(P.get("fh"),P.get("ff"));F.pick(P.get("ans")?P.get("ans")=="s":F.g.inf.seguir);if(P.get("why"))F.why()}}[start]||(()=>0))()}
 if(P.get("check"))setTimeout(()=>{const d=document.createElement("pre");d.id="chk";d.style.cssText="position:fixed;top:0;left:0;background:#ff0;color:#000;font-size:28px;z-index:9;margin:0";d.textContent="SW="+document.documentElement.scrollWidth+" CW="+document.documentElement.clientWidth;document.body.appendChild(d)},300);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
